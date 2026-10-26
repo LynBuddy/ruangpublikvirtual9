@@ -186,25 +186,25 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs">
                     <div id="tp-1" class="flex items-start space-x-2 bg-white/50 p-2.5 rounded-xl border border-slate-100">
                         <i class="fa-solid fa-circle-notch text-slate-400 mt-0.5 tp-icon"></i>
-                        <span class="text-slate-600 font-medium"><strong>TP1 (C2):</strong> Melalui pengamatan dan eksplorasi contoh platform digital, murid dapat mengklasifikasikan jenis-jenis ruang publik virtual beserta karakteristik dasarnya dengan benar minimal 3 dari 4 kategori platform yang diidentifikasi.</span>
+                        <span class="text-slate-600 font-medium"><strong>TP1 (C2):</strong> Mengklasifikasikan jenis-jenis ruang publik virtual beserta karakteristik dasarnya.</span>
                     </div>
                     <div id="tp-2" class="flex items-start space-x-2 bg-white/50 p-2.5 rounded-xl border border-slate-100">
                         <i class="fa-solid fa-circle-notch text-slate-400 mt-0.5 tp-icon"></i>
-                        <span class="text-slate-600 font-medium"><strong>TP2 (C3):</strong> Melalui studi kasus interaksi di kolom komentar, murid dapat mendemonstrasikan bentuk komunikasi netiket (network etiquette) dengan memperbaiki minimal 3 kalimat komentar berpotensi toksik menjadi kalimat yang santun dan konstruktif.</span>
+                        <span class="text-slate-600 font-medium"><strong>TP2 (C3):</strong> Mendemonstrasikan komunikasi netiket dengan memperbaiki kalimat berpotensi toksik.</span>
                     </div>
                     <div id="tp-3" class="flex items-start space-x-2 bg-white/50 p-2.5 rounded-xl border border-slate-100">
                         <i class="fa-solid fa-circle-notch text-slate-400 mt-0.5 tp-icon"></i>
-                        <span class="text-slate-600 font-medium"><strong>TP3 (C4):</strong> Melalui diskusi kelompok berbasis masalah, murid dapat menganalisis manfaat dan resiko dari penggunaan ruang publik virtual dengan menyebutkan minimal masing-masing 2 contoh dampak positif dan 2 dampak negatif pada lembar kerja.</span>
+                        <span class="text-slate-600 font-medium"><strong>TP3 (C4):</strong> Menganalisis manfaat dan risiko penggunaan ruang publik virtual.</span>
                     </div>
                     <div id="tp-4" class="flex items-start space-x-2 bg-white/50 p-2.5 rounded-xl border border-slate-100">
                         <i class="fa-solid fa-circle-notch text-slate-400 mt-0.5 tp-icon"></i>
-                        <span class="text-slate-600 font-medium"><strong>TP4 (C5):</strong> Secara berkelompok melalui studi kasus jejak digital, murid dapat mengevaluasi potensi dampak jangka panjang dari jejak digital dengan menentukan minimal 3 alasan logis mengapa suatu unggahan berisiko bagi masa depan seseorang.</span>
+                        <span class="text-slate-600 font-medium"><strong>TP4 (C5):</strong> Mengevaluasi potensi dampak jangka panjang dari jejak digital.</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 3. PUSAT BAHAN PEMBELAJARAN -->
+        <!-- 3. PUSAT BAHAN PEMBELAJARAN (SLIDE PRESENTASI & PDF) -->
         <section id="tab-materi" class="tab-content block">
             <div class="glass-panel p-6 rounded-3xl shadow-sm mb-6">
                 <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 border-b border-slate-200/60 mb-6 gap-4">
@@ -226,6 +226,7 @@
                     </div>
                 </div>
 
+                <!-- SLIDE PRESENTASI GOOGLE SLIDES EMBED -->
                 <div id="material-visual" class="block">
                     <div class="w-full rounded-2xl overflow-hidden bg-slate-900 shadow-inner border border-slate-700 relative">
                         <div class="p-3 bg-slate-800 text-white text-xs flex justify-between items-center">
@@ -238,6 +239,7 @@
                     </div>
                 </div>
 
+                <!-- MODUL PDF DRIVE EMBED -->
                 <div id="material-textual" class="hidden">
                     <div class="w-full rounded-2xl overflow-hidden bg-slate-900 shadow-inner border border-slate-700 relative">
                         <div class="p-3 bg-slate-800 text-white text-xs flex justify-between items-center">
@@ -458,7 +460,7 @@
             </div>
         </section>
 
-        <!-- 7. REFLEKSI AKHIR & PROGRAM REMEDIAL / PENGAYAAN -->
+        <!-- 7. REFLEKSI AKHIR & REMEDIAL / PENGAYAAN -->
         <section id="tab-refleksi" class="tab-content hidden">
             <div class="glass-panel p-6 rounded-3xl shadow-sm mb-6 max-w-3xl mx-auto space-y-6">
                 <div class="text-center">
@@ -554,16 +556,17 @@
         </div>
     </div>
 
-    <!-- PANEL GURU REAL-TIME (LENGKAP DATA PRESENSI, MOOD, REFLEKSI AWAL, KUIS, LKPD, TUGAS, & REFLEKSI AKHIR) -->
+    <!-- PANEL GURU REAL-TIME TERPUSAT (DENGAN REKAP LENGKAP) -->
     <div id="teacher-dashboard-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md">
         <div class="glass-panel w-full max-w-6xl rounded-3xl p-6 shadow-2xl border border-white max-h-[90vh] flex flex-col">
             <div class="flex justify-between items-center pb-4 border-b border-slate-200 mb-4">
                 <div>
                     <h3 class="text-lg font-extrabold text-slate-800"><i class="fa-solid fa-chalkboard-user text-digiblue-500 mr-2"></i> Panel Real-Time Guru</h3>
-                    <p class="text-xs text-slate-500">Rekam Jejak Presensi, Mood, Refleksi Awal, Mini Kuis, LKPD, Tugas, & Refleksi Akhir</p>
+                    <p class="text-xs text-slate-500">Rekap Isian Seluruh Siswa Terpusat (Bisa diakses dari perangkat mana saja)</p>
                 </div>
                 <div class="space-x-2">
-                    <button onclick="downloadTeacherReport()" class="px-3 py-1.5 bg-matcha-500 text-white rounded-xl text-xs font-bold hover:bg-matcha-600 transition"><i class="fa-solid fa-file-excel mr-1"></i> Download Rekap (.CSV)</button>
+                    <button onclick="fetchRemoteTeacherData()" class="px-3 py-1.5 bg-digiblue-500 text-white rounded-xl text-xs font-bold hover:bg-digiblue-600 transition"><i class="fa-solid fa-rotate mr-1"></i> Refresh Data</button>
+                    <button onclick="downloadTeacherReport()" class="px-3 py-1.5 bg-matcha-500 text-white rounded-xl text-xs font-bold hover:bg-matcha-600 transition"><i class="fa-solid fa-file-excel mr-1"></i> Unduh .CSV</button>
                     <button onclick="document.getElementById('teacher-dashboard-modal').classList.add('hidden')" class="px-3 py-1.5 bg-slate-200 text-slate-700 rounded-xl text-xs font-bold hover:bg-slate-300 transition"><i class="fa-solid fa-xmark"></i></button>
                 </div>
             </div>
@@ -575,7 +578,7 @@
                             <th class="p-3 border-b">Mood & Kesiapan</th>
                             <th class="p-3 border-b">Percobaan Kuis</th>
                             <th class="p-3 border-b">Status LKPD</th>
-                            <th class="p-3 border-b">Tugas</th>
+                            <th class="p-3 border-b">Tugas Poster</th>
                             <th class="p-3 border-b">Aksi Guru</th>
                         </tr>
                     </thead>
@@ -602,6 +605,7 @@
 
     <!-- 8. JAVASCRIPT LOGIC -->
     <script>
+        // MASUKKAN URL GOOGLE APPS SCRIPT ANDA DI SINI
         const GOOGLE_SHEETS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbx.../exec'; 
         const TEACHER_PASSWORD = 'budi149';
 
@@ -622,6 +626,8 @@
             taskSubmitted: false, taskUrl: '', taskNote: '',
             reflectionSubmitted: false, reflectionData: { ref1: '', ref2: '', understand: '85' }
         };
+
+        let remoteTeacherData = [];
 
         document.addEventListener('DOMContentLoaded', () => {
             initTeacherConfig();
@@ -677,7 +683,7 @@
             saveState();
             document.getElementById('welcome-modal').classList.add('hidden');
             updateUserGreeting();
-            submitToTeacherServer({ type: 'PRESENSI', detail: 'Check-in presensi berhasil' });
+            submitToTeacherServer({ type: 'PRESENSI' });
         }
 
         function updateUserGreeting() {
@@ -765,6 +771,7 @@
             showQuizFeedback(true, 'Hebat!', 'Perbaikan komentar netiket diterima dengan sangat baik.');
             lockQuizCard('sim1', 'sim1-input', 'btn-sim1');
             saveState();
+            submitToTeacherServer({ type: 'KUIS' });
         }
 
         function submitSim2() {
@@ -783,6 +790,7 @@
                 showQuizFeedback(false, 'Kurang Tepat', 'Menyebarkan tautan tanpa verifikasi berbahaya dan memicu hoaks.');
             }
             saveState();
+            submitToTeacherServer({ type: 'KUIS' });
         }
 
         function submitSim3() {
@@ -801,6 +809,7 @@
                 showQuizFeedback(false, 'Kurang Tepat', 'Periksa kembali data sensitif yang membahayakan privasi.');
             }
             saveState();
+            submitToTeacherServer({ type: 'KUIS' });
         }
 
         function lockQuizCard(id, inputId, btnId) {
@@ -818,7 +827,7 @@
             btn.innerText = "Terkunci (Selesai)";
         }
 
-        /* LKPD GATE PASSWORDS & CLUE SYSTEM */
+        /* LKPD UNLOCK & CLUE SYSTEM */
         function unlockCase(id) {
             const passInput = document.getElementById(`pass-case-${id}`).value.trim();
             const correctPass = id === 1 ? '9147' : '8514';
@@ -838,14 +847,14 @@
 
             if (id === 1) {
                 document.getElementById('clue-desc-1').innerText = "Rian meluapkan emosi di media sosial, mengunggah video game, dan berdiskusi di forum komunitas game. Kelompokkan ke dalam jenis ruang publik virtual!";
-                document.getElementById('clue-desc-2').innerText = "Perbaiki 3 komentar toksik Rian saat emosi (tentang kekalahan game, panitia, & lawan) menjadi kalimat santun dan konstruktif.";
-                document.getElementById('clue-desc-3').innerText = "Sebutkan minimal 2 dampak positif/manfaat dari penggunaan ruang publik virtual berdasarkan kasus Rian atau pengalamanmu!";
-                document.getElementById('clue-desc-4').innerText = "Sebutkan minimal 2 dampak negatif/risiko tersembunyi yang dialami Rian ketika tidak bijak di ruang publik virtual!";
-                document.getElementById('clue-desc-5').innerText = "Tentukan minimal 3 alasan logis mengapa unggahan/komentar toksik tersebut berisiko bagi seleksi beasiswa & masa depan Rian!";
+                document.getElementById('clue-desc-2').innerText = "Perbaiki 3 komentar toksik Rian saat emosi menjadi kalimat santun dan konstruktif.";
+                document.getElementById('clue-desc-3').innerText = "Sebutkan minimal 2 dampak positif/manfaat dari penggunaan ruang publik virtual!";
+                document.getElementById('clue-desc-4').innerText = "Sebutkan minimal 2 dampak negatif/risiko tersembunyi yang dialami Rian!";
+                document.getElementById('clue-desc-5').innerText = "Tentukan minimal 3 alasan logis mengapa komentar toksik berisiko bagi seleksi beasiswa & masa depan Rian!";
             } else {
                 document.getElementById('clue-desc-1').innerText = "Kirana berinteraksi via pesan instan, medsos, dan portal berita. Kelompokkan jenis platform digital tersebut!";
                 document.getElementById('clue-desc-2').innerText = "Perbaiki 3 komentar emosional Kirana di grup warga saat panik menjadi kalimat santun sesuai netiket.";
-                document.getElementById('clue-desc-3').innerText = "Sebutkan minimal 2 dampak positif/manfaat penggunaan ruang publik virtual berdasarkan kasus Kirana!";
+                document.getElementById('clue-desc-3').innerText = "Sebutkan minimal 2 dampak positif/manfaat penggunaan ruang publik virtual!";
                 document.getElementById('clue-desc-4').innerText = "Sebutkan minimal 2 dampak negatif/bahaya nyata (hoaks & phising) dari menyebarkan informasi tanpa verifikasi!";
                 document.getElementById('clue-desc-5').innerText = "Tentukan minimal 3 alasan logis mengapa menyebarkan hoaks berisiko bagi reputasi & masa depan seseorang!";
             }
@@ -860,34 +869,30 @@
             const c5 = document.getElementById('clue-5');
 
             if(c1.length > 2) { 
-                c2.disabled = false; 
-                c2.placeholder = "Tuliskan perbaikan netiket komentar..."; 
+                c2.disabled = false; c2.placeholder = "Tuliskan perbaikan netiket komentar..."; 
                 document.getElementById('clue-status-2').className = "text-[10px] font-bold text-matcha-600 bg-matcha-100 px-2 py-0.5 rounded-full";
-                document.getElementById('clue-status-2').innerText = "🔓 Terbuka - Siap Diisi";
+                document.getElementById('clue-status-2').innerText = "🔓 Terbuka";
             }
             if(c2.value.trim().length > 2) { 
-                c3.disabled = false; 
-                c3.placeholder = "Tuliskan manfaat positif..."; 
+                c3.disabled = false; c3.placeholder = "Tuliskan manfaat positif..."; 
                 document.getElementById('clue-status-3').className = "text-[10px] font-bold text-matcha-600 bg-matcha-100 px-2 py-0.5 rounded-full";
-                document.getElementById('clue-status-3').innerText = "🔓 Terbuka - Siap Diisi";
+                document.getElementById('clue-status-3').innerText = "🔓 Terbuka";
             }
             if(c3.value.trim().length > 2) { 
-                c4.disabled = false; 
-                c4.placeholder = "Tuliskan dampak negatif/risiko..."; 
+                c4.disabled = false; c4.placeholder = "Tuliskan dampak negatif/risiko..."; 
                 document.getElementById('clue-status-4').className = "text-[10px] font-bold text-matcha-600 bg-matcha-100 px-2 py-0.5 rounded-full";
-                document.getElementById('clue-status-4').innerText = "🔓 Terbuka - Siap Diisi";
+                document.getElementById('clue-status-4').innerText = "🔓 Terbuka";
             }
             if(c4.value.trim().length > 2) { 
-                c5.disabled = false; 
-                c5.placeholder = "Tuliskan evaluasi jejak digital..."; 
+                c5.disabled = false; c5.placeholder = "Tuliskan evaluasi jejak digital..."; 
                 document.getElementById('clue-status-5').className = "text-[10px] font-bold text-matcha-600 bg-matcha-100 px-2 py-0.5 rounded-full";
-                document.getElementById('clue-status-5').innerText = "🔓 Terbuka - Siap Diisi";
+                document.getElementById('clue-status-5').innerText = "🔓 Terbuka";
             }
 
             if(c5.value.trim().length > 2) {
                 const singleCon = document.getElementById('single-conclusion');
                 singleCon.disabled = false;
-                singleCon.placeholder = "Tuliskan kesimpulan komprehensif kelompokmu (unsur What, Who, Where, When, Why, How)...";
+                singleCon.placeholder = "Tuliskan kesimpulan komprehensif kelompokmu...";
                 document.getElementById('btn-save-lkpd').disabled = false;
             }
         }
@@ -904,7 +909,7 @@
             updateTPIndicator('tp-4');
             alert('LKPD Kelompok Berhasil Disimpan!');
             saveState();
-            submitToTeacherServer({ type: 'LKPD', detail: userData.lkpd.caseTitle });
+            submitToTeacherServer({ type: 'LKPD' });
         }
 
         function handleTaskSubmit(e) {
@@ -919,7 +924,7 @@
             alert('Tugas Poster & LKPD berhasil dikirim!');
             saveState();
             checkReflectionLock();
-            submitToTeacherServer({ type: 'TUGAS', detail: userData.taskUrl });
+            submitToTeacherServer({ type: 'TUGAS' });
         }
 
         function checkReflectionLock() {
@@ -950,25 +955,11 @@
             saveState();
             document.getElementById('celebration-modal').classList.remove('hidden');
             if (typeof confetti === 'function') confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
-            submitToTeacherServer({ type: 'REFLEKSI', detail: 'Selesai & Refleksi dikirim' });
+            submitToTeacherServer({ type: 'REFLEKSI' });
         }
 
         function saveState() {
             localStorage.setItem('kota_digital_user', JSON.stringify(userData));
-            let allStudents = JSON.parse(localStorage.getItem('teacher_all_students_data') || '[]');
-            const idx = allStudents.findIndex(s => s.name === userData.name && s.class === userData.class);
-            const studentRecord = {
-                timestamp: new Date().toLocaleString(),
-                name: userData.name || 'Siswa',
-                class: userData.class || '-',
-                absent: userData.absent || '-',
-                activity: userData.reflectionSubmitted ? 'Selesai Sesi' : (userData.taskSubmitted ? 'Tugas Dikirim' : (userData.lkpd.locked ? 'Mengerjakan LKPD' : 'Check-in')),
-                taskStatus: userData.taskSubmitted ? 'Sudah Diunggah' : 'Belum',
-                fullData: userData
-            };
-            if (idx >= 0) allStudents[idx] = studentRecord;
-            else allStudents.push(studentRecord);
-            localStorage.setItem('teacher_all_students_data', JSON.stringify(allStudents));
         }
 
         function restoreStateUI() {
@@ -990,7 +981,7 @@
             }
         }
 
-        /* PANEL GURU DENGAN KATA SANDI budi149 */
+        /* AKSELERASI REKAP DATA SERVER TERPUSAT GURU (BISA DIBUKA DI MANA SAJA) */
         function openTeacherDashboard() {
             const pwd = prompt("Masukkan Sandi Panel Guru:");
             if (pwd !== TEACHER_PASSWORD) {
@@ -998,95 +989,112 @@
                 return;
             }
 
+            document.getElementById('teacher-dashboard-modal').classList.remove('hidden');
+            fetchRemoteTeacherData();
+        }
+
+        function fetchRemoteTeacherData() {
+            const tbody = document.getElementById('teacher-table-body');
+            tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-slate-500 font-bold"><i class="fa-solid fa-spinner fa-spin mr-2"></i> Mengambil data rekap terbaru dari server Google Sheets...</td></tr>`;
+
+            if (!GOOGLE_SHEETS_WEB_APP_URL || GOOGLE_SHEETS_WEB_APP_URL.includes('...')) {
+                tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-amber-600 font-bold">Harap masukkan URL Google Apps Script yang valid pada variabel GOOGLE_SHEETS_WEB_APP_URL.</td></tr>`;
+                return;
+            }
+
+            fetch(GOOGLE_SHEETS_WEB_APP_URL)
+                .then(res => res.json())
+                .then(data => {
+                    remoteTeacherData = data;
+                    renderTeacherTable(data);
+                })
+                .catch(err => {
+                    console.error(err);
+                    tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-red-500 font-bold">Gagal terhubung ke Google Sheets. Pastikan publikasi Apps Script diatur ke 'Anyone'.</td></tr>`;
+                });
+        }
+
+        function renderTeacherTable(data) {
             const tbody = document.getElementById('teacher-table-body');
             tbody.innerHTML = '';
-            let allStudents = JSON.parse(localStorage.getItem('teacher_all_students_data') || '[]');
-            if (allStudents.length === 0) {
+            
+            if (!data || data.length === 0) {
                 tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-slate-400">Belum ada data siswa yang masuk.</td></tr>`;
-            } else {
-                allStudents.forEach((s, index) => {
-                    const fd = s.fullData;
-                    tbody.innerHTML += `
-                        <tr class="hover:bg-slate-50 border-b">
-                            <td class="p-3 font-bold text-slate-800">${s.name} <span class="block text-[10px] text-slate-500">Kelas ${s.class} (Absen ${s.absent})</span></td>
-                            <td class="p-3"><span class="px-2 py-0.5 bg-matcha-100 text-matcha-600 rounded-full font-bold">${fd.mood || '😊 Ceria'}</span> <span class="block text-[10px] text-slate-500 mt-0.5">Kesiapan: ${fd.readiness || '80'}%</span></td>
-                            <td class="p-3 text-[11px]">Sim1: ${fd.quizAttempts.sim1}x | Sim2: ${fd.quizAttempts.sim2}x | Sim3: ${fd.quizAttempts.sim3}x</td>
-                            <td class="p-3"><span class="px-2 py-0.5 bg-lilac-100 text-lilac-600 rounded-full font-semibold">${fd.lkpd.locked ? 'Dikerjakan' : 'Belum'}</span></td>
-                            <td class="p-3 font-semibold text-slate-700">${s.taskStatus}</td>
-                            <td class="p-3"><button onclick="viewStudentDetail(${index})" class="px-3 py-1 bg-digiblue-500 text-white rounded-xl text-xs font-bold hover:bg-digiblue-600 transition shadow"><i class="fa-solid fa-eye mr-1"></i> Detail</button></td>
-                        </tr>
-                    `;
-                });
+                return;
             }
-            document.getElementById('teacher-dashboard-modal').classList.remove('hidden');
+
+            data.forEach((s, index) => {
+                tbody.innerHTML += `
+                    <tr class="hover:bg-slate-50 border-b">
+                        <td class="p-3 font-bold text-slate-800">${s.Nama_Siswa || s.Nama || '-'} <span class="block text-[10px] text-slate-500">Kelas ${s.Kelas || '-'} (Absen ${s.Absen || '-'})</span></td>
+                        <td class="p-3"><span class="px-2 py-0.5 bg-matcha-100 text-matcha-600 rounded-full font-bold">${s.Mood || '😊 Ceria'}</span> <span class="block text-[10px] text-slate-500 mt-0.5">Kesiapan: ${s.Kesiapan || '80'}%</span></td>
+                        <td class="p-3 text-[11px]">Sim1: ${s.Sim1_Percobaan || 0}x | Sim2: ${s.Sim2_Percobaan || 0}x | Sim3: ${s.Sim3_Percobaan || 0}x</td>
+                        <td class="p-3"><span class="px-2 py-0.5 bg-lilac-100 text-lilac-600 rounded-full font-semibold">${s.Studi_Kasus ? 'Sudah' : 'Belum'}</span></td>
+                        <td class="p-3 font-semibold text-slate-700">${s.Link_Tugas ? '<span class="text-matcha-600 font-bold">Sudah</span>' : 'Belum'}</td>
+                        <td class="p-3"><button onclick="viewStudentDetail(${index})" class="px-3 py-1 bg-digiblue-500 text-white rounded-xl text-xs font-bold hover:bg-digiblue-600 transition shadow"><i class="fa-solid fa-eye mr-1"></i> Detail</button></td>
+                    </tr>
+                `;
+            });
         }
 
         function viewStudentDetail(index) {
-            let allStudents = JSON.parse(localStorage.getItem('teacher_all_students_data') || '[]');
-            const s = allStudents[index];
-            const fd = s.fullData;
+            const s = remoteTeacherData[index];
+            if (!s) return;
 
-            document.getElementById('modal-student-title').innerText = `Detail Rekam Jejak: ${s.name} (Kelas ${s.class})`;
+            document.getElementById('modal-student-title').innerText = `Detail Rekam Jejak: ${s.Nama_Siswa || s.Nama} (Kelas ${s.Kelas})`;
             const content = document.getElementById('modal-student-content');
             content.innerHTML = `
                 <div class="p-3 bg-slate-100 rounded-xl space-y-1">
                     <p class="font-bold text-slate-700">1. Presensi, Suasana Hati & Refleksi Awal Pemantik:</p>
-                    <p><strong>Nama:</strong> ${fd.name} (Kelas ${fd.class}, No. Absen ${fd.absent})</p>
-                    <p><strong>Suasana Hati (Mood):</strong> ${fd.mood || '-'} | <strong>Kesiapan Belajar:</strong> ${fd.readiness || '80'}%</p>
-                    <p><strong>Jawaban Pertanyaan Pemantik:</strong> "${fd.triggerAns || '-'}"</p>
+                    <p><strong>Nama:</strong> ${s.Nama_Siswa || s.Nama} (Kelas ${s.Kelas}, Absen ${s.Absen})</p>
+                    <p><strong>Suasana Hati (Mood):</strong> ${s.Mood || '-'} | <strong>Kesiapan Belajar:</strong> ${s.Kesiapan || '80'}%</p>
+                    <p><strong>Pertanyaan Pemantik:</strong> "${s.Pertanyaan_Pemantik || '-'}"</p>
                 </div>
                 <div class="p-3 bg-warmorange-50 rounded-xl space-y-1 border border-warmorange-100">
                     <p class="font-bold text-warmorange-700">2. Hasil Mini Kuis (Jumlah Percobaan):</p>
-                    <p>• <strong>Simulasi 1 (Etika Komentar):</strong> ${fd.quizAttempts.sim1} percobaan (${fd.quizPassed.sim1 ? 'Terjawab Benar' : 'Belum'})</p>
-                    <p>• <strong>Simulasi 2 (Deteksi Hoaks 3S):</strong> ${fd.quizAttempts.sim2} percobaan (${fd.quizPassed.sim2 ? 'Terjawab Benar' : 'Belum'})</p>
-                    <p>• <strong>Simulasi 3 (Keamanan Privasi):</strong> ${fd.quizAttempts.sim3} percobaan (${fd.quizPassed.sim3 ? 'Terjawab Benar' : 'Belum'})</p>
+                    <p>• <strong>Simulasi 1 (Etika Komentar):</strong> ${s.Sim1_Percobaan || 0} percobaan</p>
+                    <p>• <strong>Simulasi 2 (Deteksi Hoaks 3S):</strong> ${s.Sim2_Percobaan || 0} percobaan</p>
+                    <p>• <strong>Simulasi 3 (Keamanan Privasi):</strong> ${s.Sim3_Percobaan || 0} percobaan</p>
                 </div>
                 <div class="p-3 bg-lilac-50 rounded-xl space-y-1 border border-lilac-100">
-                    <p class="font-bold text-lilac-700">3. Isian LKPD (${fd.lkpd.caseTitle || 'Belum dipilih'}):</p>
-                    <p>• <strong>Clue 1 (Klasifikasi Platform):</strong> ${fd.lkpd.clue1 || '-'}</p>
-                    <p>• <strong>Clue 2 (Netiket Komunikasi):</strong> ${fd.lkpd.clue2 || '-'}</p>
-                    <p>• <strong>Clue 3 (Manfaat Positif):</strong> ${fd.lkpd.clue3 || '-'}</p>
-                    <p>• <strong>Clue 4 (Dampak Negatif/Risiko):</strong> ${fd.lkpd.clue4 || '-'}</p>
-                    <p>• <strong>Clue 5 (Jejak Digital):</strong> ${fd.lkpd.clue5 || '-'}</p>
-                    <p>• <strong>Kesimpulan 5W+1H:</strong> ${fd.lkpd.conclusion || '-'}</p>
+                    <p class="font-bold text-lilac-700">3. Isian LKPD (${s.Studi_Kasus || 'Belum dipilih'}):</p>
+                    <p>• <strong>Kesimpulan Analisis Kelompok:</strong> ${s.LKPD_Kesimpulan || '-'}</p>
                 </div>
                 <div class="p-3 bg-digiblue-50 rounded-xl space-y-1 border border-digiblue-100">
-                    <p class="font-bold text-digiblue-700">4. Pengumpulan Tugas & Tautan Poster:</p>
-                    <p>• <strong>Link Tugas:</strong> ${fd.taskUrl ? `<a href="${fd.taskUrl}" target="_blank" class="underline text-blue-600 font-bold">${fd.taskUrl}</a>` : 'Belum diunggah'}</p>
-                    <p>• <strong>Catatan Kelompok:</strong> ${fd.taskNote || '-'}</p>
+                    <p class="font-bold text-digiblue-700">4. Pengumpulan Tugas Poster:</p>
+                    <p>• <strong>Link Tugas:</strong> ${s.Link_Tugas ? `<a href="${s.Link_Tugas}" target="_blank" class="underline text-blue-600 font-bold">${s.Link_Tugas}</a>` : 'Belum diunggah'}</p>
                 </div>
                 <div class="p-3 bg-matcha-50 rounded-xl space-y-1 border border-matcha-100">
                     <p class="font-bold text-matcha-700">5. Refleksi Akhir Murid:</p>
-                    <p>• <strong>Hal Baru yang Menarik:</strong> ${fd.reflectionData.ref1 || '-'}</p>
-                    <p>• <strong>Tantangan / Kesulitan:</strong> ${fd.reflectionData.ref2 || '-'}</p>
-                    <p>• <strong>Tingkat Pemahaman:</strong> ${fd.reflectionData.understand || '85'}%</p>
+                    <p>• <strong>Hal Baru yang Menarik:</strong> ${s.Refleksi_Hal_Baru || '-'}</p>
+                    <p>• <strong>Tantangan / Kesulitan:</strong> ${s.Refleksi_Tantangan || '-'}</p>
+                    <p>• <strong>Tingkat Pemahaman:</strong> ${s.Tingkat_Pemahaman || '85'}%</p>
                 </div>
             `;
             document.getElementById('student-detail-modal').classList.remove('hidden');
         }
 
         function downloadTeacherReport() {
-            let allStudents = JSON.parse(localStorage.getItem('teacher_all_students_data') || '[]');
-            if (allStudents.length === 0) { alert('Belum ada data untuk diunduh.'); return; }
+            if (!remoteTeacherData || remoteTeacherData.length === 0) { alert('Belum ada data untuk diunduh.'); return; }
             let csv = 'Waktu,Nama Siswa,Kelas,Absen,Mood,Kesiapan,Pertanyaan_Pemantik,Sim1_Percobaan,Sim2_Percobaan,Sim3_Percobaan,Studi_Kasus,LKPD_Kesimpulan,Link_Tugas,Refleksi_Hal_Baru,Refleksi_Tantangan,Tingkat_Pemahaman\n';
-            allStudents.forEach(s => {
-                const fd = s.fullData;
-                csv += `"${s.timestamp}","${s.name}","${s.class}","${s.absent}","${fd.mood}","${fd.readiness}%","${(fd.triggerAns||'').replace(/"/g, '""')}","${fd.quizAttempts.sim1}","${fd.quizAttempts.sim2}","${fd.quizAttempts.sim3}","${fd.lkpd.caseTitle||'-'}","${(fd.lkpd.conclusion||'').replace(/"/g, '""')}","${fd.taskUrl||'-'}","${(fd.reflectionData.ref1||'').replace(/"/g, '""')}","${(fd.reflectionData.ref2||'').replace(/"/g, '""')}","${fd.reflectionData.understand}%"\n`;
+            remoteTeacherData.forEach(s => {
+                csv += `"${s.Waktu}","${s.Nama_Siswa||s.Nama}","${s.Kelas}","${s.Absen}","${s.Mood}","${s.Kesiapan}","${(s.Pertanyaan_Pemantik||'').replace(/"/g, '""')}","${s.Sim1_Percobaan}","${s.Sim2_Percobaan}","${s.Sim3_Percobaan}","${s.Studi_Kasus||'-'}","${(s.LKPD_Kesimpulan||'').replace(/"/g, '""')}","${s.Link_Tugas||'-'}","${(s.Refleksi_Hal_Baru||'').replace(/"/g, '""')}","${(s.Refleksi_Tantangan||'').replace(/"/g, '""')}","${s.Tingkat_Pemahaman}"\n`;
             });
             const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
-            link.download = `Rekap_Lengkap_KotaDigital_${new Date().toISOString().slice(0,10)}.csv`;
+            link.download = `Rekap_Terpusat_KotaDigital_${new Date().toISOString().slice(0,10)}.csv`;
             link.click();
         }
 
         function submitToTeacherServer(payload) {
             saveState();
-            if (!GOOGLE_SHEETS_WEB_APP_URL || GOOGLE_SHEETS_WEB_APP_URL.includes('...')) return;
+            if (!GOOGLE_SHEETS_WEB_APP_URL || GOOGLE_SHEETS_WEB_APP_URL.includes('https://script.google.com/macros/s/AKfycbxrezQj9CANv1uB4pc2xlJ3mDaQQ2-vVHzXJRF9Ixbay_vhEccgFxjMgvK49Ol-o1gl/exec')) return;
+            
             fetch(GOOGLE_SHEETS_WEB_APP_URL, {
-                method: 'POST', mode: 'no-cors',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ student: userData.name, class: userData.class, timestamp: new Date(), ...payload })
+                method: 'POST',
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                body: JSON.stringify(userData)
             }).catch(err => console.error("Sync error:", err));
         }
     </script>
