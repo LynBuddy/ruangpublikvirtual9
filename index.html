@@ -56,7 +56,7 @@
 </head>
 <body class="bg-gradient-to-br from-slate-50 via-digiblue-100/30 to-lilac-100/40 min-h-screen text-slate-800 font-sans antialiased pb-12">
 
-    <!-- 1. MODAL WELCOMING & CHECK-IN -->
+    <!-- 1. MODAL WELCOMING & CHECK-IN (PRESENSI) -->
     <div id="welcome-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-md overflow-y-auto">
         <div class="glass-panel w-full max-w-lg rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/80 my-8 max-h-[90vh] overflow-y-auto">
             <div class="text-center mb-6">
@@ -120,7 +120,7 @@
         </div>
     </div>
 
-    <!-- 2. STICKY NAVBAR -->
+    <!-- 2. STICKY NAVBAR DENGAN TOMBOL KELUAR -->
     <header class="sticky top-0 z-40 glass-panel border-b border-white/60 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
             <div class="flex items-center space-x-3">
@@ -141,14 +141,13 @@
                 <button onclick="switchTab('tab-refleksi')" id="nav-tab-refleksi" class="nav-btn px-4 py-1.5 rounded-xl text-xs font-bold text-slate-700 transition">Refleksi</button>
             </nav>
 
-            <div class="flex items-center space-x-3">
+            <div class="flex items-center space-x-2">
                 <button onclick="openTeacherDashboard()" class="px-3 py-1.5 bg-digiblue-500 hover:bg-digiblue-600 text-white rounded-xl text-xs font-bold shadow transition flex items-center">
-                    <i class="fa-solid fa-chalkboard-user mr-1.5"></i> Panel Guru
+                    <i class="fa-solid fa-chalkboard-user mr-1"></i> Guru
                 </button>
-                <div class="text-right hidden sm:block">
-                    <span class="block text-[10px] uppercase font-bold text-slate-400">Siswa</span>
-                    <span id="display-user-name" class="text-xs font-bold text-slate-700">Halo, Siswa!</span>
-                </div>
+                <button onclick="handleLogout()" title="Keluar ke Presensi" class="px-3 py-1.5 bg-red-100 hover:bg-red-200 text-red-600 rounded-xl text-xs font-bold shadow transition flex items-center">
+                    <i class="fa-solid fa-right-from-bracket mr-1"></i> Keluar
+                </button>
             </div>
         </div>
 
@@ -254,14 +253,14 @@
             </div>
         </section>
 
-        <!-- 4. MINI KUIS INTERAKTIF & TERKUNCI JIKA SUDAH BENAR -->
+        <!-- 4. MINI KUIS INTERAKTIF & POSISI TERKUNCI JIKA SUDAH BENAR -->
         <section id="tab-kuis" class="tab-content hidden">
             <div class="glass-panel p-6 rounded-3xl shadow-sm mb-6">
                 <div class="mb-6">
                     <h2 class="text-xl font-extrabold text-slate-800 flex items-center">
                         <i class="fa-solid fa-gamepad text-warmorange-500 mr-2"></i> Simulasi Kota Digital & Mini Kuis
                     </h2>
-                    <p class="text-xs text-slate-500">Selesaikan tantangan di bawah! Kuis akan terkunci otomatis setelah berhasil dijawab dengan benar.</p>
+                    <p class="text-xs text-slate-500">Pop-up feedback akan muncul. Jika jawaban sudah benar, posisi tombol dan input akan terkunci permanen.</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -288,7 +287,7 @@
                             </div>
                             <h3 class="font-bold text-sm text-slate-800 mt-2 mb-1">Deteksi Hoaks (Prinsip 3S)</h3>
                             <p class="text-xs text-slate-600 mb-3">Mendapatkan info viral bantuan dana tidak resmi di grup warga, tindakan tepat:</p>
-                            <div class="space-y-2 text-xs">
+                            <div class="space-y-2 text-xs" id="group-sim2-opts">
                                 <label class="flex items-center space-x-2 bg-white/60 p-2 rounded-xl border cursor-pointer hover:bg-digiblue-50"><input type="radio" name="hoax-action" value="sebar" class="accent-digiblue-500"><span>Langsung sebar ke grup lain</span></label>
                                 <label class="flex items-center space-x-2 bg-white/60 p-2 rounded-xl border cursor-pointer hover:bg-digiblue-50"><input type="radio" name="hoax-action" value="saring" class="accent-digiblue-500"><span>Saring & Cek kebenaran dulu</span></label>
                             </div>
@@ -305,7 +304,7 @@
                             </div>
                             <h3 class="font-bold text-sm text-slate-800 mt-2 mb-1">Keamanan Privasi</h3>
                             <p class="text-xs text-slate-600 mb-3">Manakah data yang <strong>BAHAYA</strong> jika diposting ke publik?</p>
-                            <div class="space-y-1.5 text-xs">
+                            <div class="space-y-1.5 text-xs" id="group-sim3-opts">
                                 <label class="flex items-center space-x-2"><input type="checkbox" id="priv-1" class="accent-matcha-500"><span>Foto NIK & Akta Lahir</span></label>
                                 <label class="flex items-center space-x-2"><input type="checkbox" id="priv-2" class="accent-matcha-500"><span>Foto Suasana Kelas</span></label>
                                 <label class="flex items-center space-x-2"><input type="checkbox" id="priv-3" class="accent-matcha-500"><span>Alamat & Tiket Pesawat Pribadi</span></label>
@@ -317,7 +316,7 @@
             </div>
         </section>
 
-        <!-- 5. LKPD ONLINE (CLUE TETAP MUNCUL DI LAYAR & KESIMPULAN TUNGGAL) -->
+        <!-- 5. LKPD ONLINE -->
         <section id="tab-lkpd" class="tab-content hidden">
             <div class="glass-panel p-6 rounded-3xl shadow-sm mb-6">
                 <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 border-b border-slate-200/60 mb-6 gap-2">
@@ -361,49 +360,42 @@
                     </div>
                 </div>
 
-                <!-- LKPD Workspace (Clues Always Visible) -->
                 <div id="lkpd-workspace" class="hidden space-y-4">
                     <div class="p-3 bg-matcha-100/60 rounded-xl border border-matcha-300 text-xs font-bold text-matcha-600 flex items-center justify-between">
                         <span><i class="fa-solid fa-lock-open mr-1"></i> Kasus Aktif: <span id="locked-case-title">-</span></span>
                         <span class="text-[10px] bg-white px-2 py-0.5 rounded-full text-slate-600">Validasi Berjenjang Active</span>
                     </div>
 
-                    <!-- Clue 1 -->
                     <div class="bg-white/70 p-4 rounded-2xl border border-slate-200">
                         <label class="block text-xs font-bold text-slate-700 mb-1">Clue 1: Klasifikasi Ruang Publik Virtual (C2)</label>
                         <p class="text-[11px] text-slate-500 mb-2" id="clue-desc-1">-</p>
                         <textarea id="clue-1" oninput="validateClues()" rows="2" placeholder="Tuliskan klasifikasi platform..." class="w-full p-2.5 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-lilac-400 focus:outline-none"></textarea>
                     </div>
 
-                    <!-- Clue 2 -->
                     <div class="bg-white/70 p-4 rounded-2xl border border-slate-200">
                         <label class="block text-xs font-bold text-slate-700 mb-1">Clue 2: Perbaikan Netiket Komunikasi (C3)</label>
                         <p class="text-[11px] text-slate-500 mb-2" id="clue-desc-2">🔒 Jawab Clue 1 terlebih dahulu...</p>
                         <textarea id="clue-2" disabled oninput="validateClues()" rows="2" placeholder="🔒 Terkunci..." class="w-full p-2.5 rounded-xl border border-slate-200 text-xs disabled:bg-slate-100 disabled:cursor-not-allowed"></textarea>
                     </div>
 
-                    <!-- Clue 3 -->
                     <div class="bg-white/70 p-4 rounded-2xl border border-slate-200">
                         <label class="block text-xs font-bold text-slate-700 mb-1">Clue 3: Manfaat Positif Ruang Publik Virtual (C4)</label>
                         <p class="text-[11px] text-slate-500 mb-2" id="clue-desc-3">🔒 Jawab Clue 2 terlebih dahulu...</p>
                         <textarea id="clue-3" disabled oninput="validateClues()" rows="2" placeholder="🔒 Terkunci..." class="w-full p-2.5 rounded-xl border border-slate-200 text-xs disabled:bg-slate-100 disabled:cursor-not-allowed"></textarea>
                     </div>
 
-                    <!-- Clue 4 -->
                     <div class="bg-white/70 p-4 rounded-2xl border border-slate-200">
                         <label class="block text-xs font-bold text-slate-700 mb-1">Clue 4: Risiko / Dampak Negatif (C4)</label>
                         <p class="text-[11px] text-slate-500 mb-2" id="clue-desc-4">🔒 Jawab Clue 3 terlebih dahulu...</p>
                         <textarea id="clue-4" disabled oninput="validateClues()" rows="2" placeholder="🔒 Terkunci..." class="w-full p-2.5 rounded-xl border border-slate-200 text-xs disabled:bg-slate-100 disabled:cursor-not-allowed"></textarea>
                     </div>
 
-                    <!-- Clue 5 -->
                     <div class="bg-white/70 p-4 rounded-2xl border border-slate-200">
                         <label class="block text-xs font-bold text-slate-700 mb-1">Clue 5: Evaluasi Jejak Digital (C5)</label>
                         <p class="text-[11px] text-slate-500 mb-2" id="clue-desc-5">🔒 Jawab Clue 4 terlebih dahulu...</p>
                         <textarea id="clue-5" disabled oninput="validateClues()" rows="2" placeholder="🔒 Terkunci..." class="w-full p-2.5 rounded-xl border border-slate-200 text-xs disabled:bg-slate-100 disabled:cursor-not-allowed"></textarea>
                     </div>
 
-                    <!-- Lembar Kesimpulan (Kolom Tunggal) -->
                     <div class="bg-gradient-to-r from-lilac-100/50 to-digiblue-100/50 p-5 rounded-2xl border border-lilac-200 mt-6 space-y-3">
                         <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wide">Lembar Kesimpulan Analisis Kelompok 📝</h4>
                         <p class="text-[11px] text-slate-600">Tuliskan kesimpulan komprehensif kelompokmu (menjawab unsur What, Who, Where, When, Why, How):</p>
@@ -507,12 +499,12 @@
         </div>
     </div>
 
-    <!-- PANEL GURU REAL-TIME (DENGAN DETAIL JAWABAN SISWA) -->
+    <!-- PANEL GURU REAL-TIME -->
     <div id="teacher-dashboard-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md">
         <div class="glass-panel w-full max-w-5xl rounded-3xl p-6 shadow-2xl border border-white max-h-[90vh] flex flex-col">
             <div class="flex justify-between items-center pb-4 border-b border-slate-200 mb-4">
                 <div>
-                    <h3 class="text-lg font-extrabold text-slate-800"><i class="fa-solid fa-chalkboard-user text-digiblue-500 mr-2"></i> Panel Real-Time Guru (Detail Isian Siswa)</h3>
+                    <h3 class="text-lg font-extrabold text-slate-800"><i class="fa-solid fa-chalkboard-user text-digiblue-500 mr-2"></i> Panel Real-Time Guru</h3>
                     <p class="text-xs text-slate-500">Pantau percobaan kuis, isian LKPD, tugas, dan refleksi seluruh siswa</p>
                 </div>
                 <div class="space-x-2">
@@ -539,7 +531,7 @@
         </div>
     </div>
 
-    <!-- MODAL DETAIL SISWA UNTUK GURU -->
+    <!-- MODAL DETAIL SISWA -->
     <div id="student-detail-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md">
         <div class="glass-panel w-full max-w-2xl rounded-3xl p-6 shadow-2xl border border-white max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center pb-3 border-b border-slate-200 mb-4">
@@ -596,7 +588,18 @@
                     document.getElementById('welcome-modal').classList.add('hidden');
                     updateUserGreeting();
                     restoreStateUI();
+                } else {
+                    document.getElementById('welcome-modal').classList.remove('hidden');
                 }
+            } else {
+                document.getElementById('welcome-modal').classList.remove('hidden');
+            }
+        }
+
+        function handleLogout() {
+            if (confirm("Apakah kamu ingin keluar dan kembali ke halaman presensi awal?")) {
+                localStorage.removeItem('kota_digital_user');
+                location.reload();
             }
         }
 
@@ -689,7 +692,7 @@
             }
         }
 
-        /* MINI KUIS LOGIC (LOCKS AFTER SUCCESS) */
+        /* MINI KUIS LOGIC (FEEDBACK POPUP MUNCUL, LALU POSISI TERKUNCI JIKA BENAR) */
         function submitSim1() {
             if (userData.quizPassed.sim1) return;
             userData.quizAttempts.sim1++;
@@ -703,8 +706,8 @@
             }
             userData.quizPassed.sim1 = true;
             updateTPIndicator('tp-2');
+            showQuizFeedback(true, 'Hebat!', 'Perbaikan komentar netiket diterima dengan sangat baik.');
             lockQuizCard('sim1', 'sim1-input', 'btn-sim1');
-            showQuizFeedback(true, 'Hebat!', 'Perbaikan komentar netiket diterima. Kuis terkunci.');
             saveState();
         }
 
@@ -718,8 +721,8 @@
             if (selected.value === 'saring') {
                 userData.quizPassed.sim2 = true;
                 updateTPIndicator('tp-3');
+                showQuizFeedback(true, 'Benar!', 'Prinsip Saring Sebelum Sharing berhasil diterapkan.');
                 lockQuizCardGroup('sim2', 'btn-sim2');
-                showQuizFeedback(true, 'Benar!', 'Prinsip Saring Sebelum Sharing berhasil diterapkan. Kuis terkunci.');
             } else {
                 showQuizFeedback(false, 'Kurang Tepat', 'Menyebarkan tautan tanpa verifikasi berbahaya dan memicu hoaks.');
             }
@@ -736,8 +739,8 @@
             const c3 = document.getElementById('priv-3').checked;
             if (c1 && !c2 && c3) {
                 userData.quizPassed.sim3 = true;
+                showQuizFeedback(true, 'Tepat Sekali!', 'NIK dan Alamat/Tiket adalah data privasi sensitif.');
                 lockQuizCardGroup('sim3', 'btn-sim3');
-                showQuizFeedback(true, 'Tepat Sekali!', 'NIK dan Alamat/Tiket adalah data privasi sensitif. Kuis terkunci.');
             } else {
                 showQuizFeedback(false, 'Kurang Tepat', 'Periksa kembali data sensitif yang membahayakan privasi.');
             }
@@ -759,7 +762,7 @@
             btn.innerText = "Terkunci (Selesai)";
         }
 
-        /* LKPD GATE PASSWORDS & CLUE SYSTEM (ALL CLUES REMAIN VISIBLE) */
+        /* LKPD GATE PASSWORDS & CLUE SYSTEM */
         function unlockCase(id) {
             const passInput = document.getElementById(`pass-case-${id}`).value.trim();
             const correctPass = id === 1 ? '9147' : '8514';
