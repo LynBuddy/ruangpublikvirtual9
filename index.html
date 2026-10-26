@@ -367,6 +367,16 @@
                         <span class="text-[10px] bg-white px-2 py-0.5 rounded-full text-slate-600">Validasi Berjenjang Active</span>
                     </div>
 
+                    <!-- KOTAK NARASI CERITA STUDI KASUS (Tampil setelah berhasil buka kunci) -->
+                    <div id="case-story-box" class="bg-white/90 p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                        <div class="flex items-center space-x-2 text-digiblue-600 font-extrabold text-xs uppercase tracking-wider">
+                            <i class="fa-solid fa-book-open-reader"></i>
+                            <span>Narasi Cerita Studi Kasus</span>
+                        </div>
+                        <h4 id="case-story-heading" class="font-extrabold text-sm text-slate-800"></h4>
+                        <div id="case-story-content" class="text-xs text-slate-700 leading-relaxed space-y-2 bg-slate-50/80 p-4 rounded-xl border border-slate-100"></div>
+                    </div>
+
                     <!-- Clue 1 -->
                     <div class="bg-white/70 p-4 rounded-2xl border border-slate-200">
                         <label class="block text-xs font-bold text-slate-700 mb-1">Clue 1: Klasifikasi Ruang Publik Virtual (C2)</label>
@@ -827,7 +837,7 @@
             btn.innerText = "Terkunci (Selesai)";
         }
 
-        /* LKPD UNLOCK & CLUE SYSTEM */
+        /* LKPD UNLOCK & CLUE SYSTEM DENGAN NARASI CERITA DI ATAS */
         function unlockCase(id) {
             const passInput = document.getElementById(`pass-case-${id}`).value.trim();
             const correctPass = id === 1 ? '9147' : '8514';
@@ -845,13 +855,31 @@
             document.getElementById('lkpd-workspace').classList.remove('hidden');
             document.getElementById('locked-case-title').innerText = userData.lkpd.caseTitle;
 
+            // Render Narasi Cerita di atas sebelum pertanyaan klue
+            const storyHeading = document.getElementById('case-story-heading');
+            const storyContent = document.getElementById('case-story-content');
+
             if (id === 1) {
+                storyHeading.innerText = "Studi Kasus 1: \"Jejak Retak di Ruang Maya\" (Rian - E-Sport & Jejak Digital)";
+                storyContent.innerHTML = `
+                    <p><strong>Deskripsi Kasus:</strong> Rian adalah seorang remaja kelas 9 yang sangat antusias dengan dunia <em>e-sport</em> dan gim online kompetitif. Suatu malam, saat bertanding di turnamen online regional, timnya mengalami kekalahan dramatis karena koneksi yang buruk dan kesalahan komunikasi rekan setim.</p>
+                    <p>Dalam keadaan emosi dan terbawa suasana kompetitif, Rian mengetik komentar pedas, hujatan, dan ancaman di kolom chat publik serta forum komunitas gim tersebut. Ia bahkan menantang pemain lain di media sosial pribadinya tanpa menyadari bahwa akun media sosial tersebut menggunakan nama asli dan terhubung dengan profil sekolah serta data pribadinya.</p>
+                    <p>Beberapa bulan kemudian, saat Rian mendaftar beasiswa prestasi dan seleksi masuk sekolah impian, pihak panitia penyeleksi melacak rekam jejak digitalnya dan menemukan jejak komentar toksik tersebut, yang berujung pada peninjauan ulang kelayakannya.</p>
+                `;
+
                 document.getElementById('clue-desc-1').innerText = "Rian meluapkan emosi di media sosial, mengunggah video game, dan berdiskusi di forum komunitas game. Kelompokkan ke dalam jenis ruang publik virtual!";
                 document.getElementById('clue-desc-2').innerText = "Perbaiki 3 komentar toksik Rian saat emosi menjadi kalimat santun dan konstruktif.";
                 document.getElementById('clue-desc-3').innerText = "Sebutkan minimal 2 dampak positif/manfaat dari penggunaan ruang publik virtual!";
                 document.getElementById('clue-desc-4').innerText = "Sebutkan minimal 2 dampak negatif/risiko tersembunyi yang dialami Rian!";
                 document.getElementById('clue-desc-5').innerText = "Tentukan minimal 3 alasan logis mengapa komentar toksik berisiko bagi seleksi beasiswa & masa depan Rian!";
             } else {
+                storyHeading.innerText = "Studi Kasus 2: \"Misteri Berita Viral di Grup Warga\" (Kirana & Hoaks Phising)";
+                storyContent.innerHTML = `
+                    <p><strong>Deskripsi Kasus:</strong> Kirana aktif di berbagai grup WhatsApp warga dan platform media sosial. Suatu sore, sebuah pesan berantai (broadcast) viral menyebar di grup warga perumahannya, mengklaim bahwa ada program pembagian bantuan dana sosial tunai darurat dari pemerintah daerah bagi keluarga yang mengisi formulir melalui tautan (<em>link</em>) khusus yang dilampirkan.</p>
+                    <p>Karena melihat beberapa tetangga sudah mulai membagikan ulang (<em>forward</em>) pesan tersebut dan merasa panik serta tergiur, Kirana langsung mengklik tautan tersebut dan mengisi data pribadi keluarganya, termasuk nomor NIK, nomor WhatsApp, serta kode OTP yang masuk ke ponselnya.</p>
+                    <p>Tak lama kemudian, akun media sosial milik orang tua Kirana diretas dan terjadi percobaan penipuan finansial yang mengatasnamakan keluarganya di grup warga.</p>
+                `;
+
                 document.getElementById('clue-desc-1').innerText = "Kirana berinteraksi via pesan instan, medsos, dan portal berita. Kelompokkan jenis platform digital tersebut!";
                 document.getElementById('clue-desc-2').innerText = "Perbaiki 3 komentar emosional Kirana di grup warga saat panik menjadi kalimat santun sesuai netiket.";
                 document.getElementById('clue-desc-3').innerText = "Sebutkan minimal 2 dampak positif/manfaat penggunaan ruang publik virtual!";
