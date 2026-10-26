@@ -56,9 +56,9 @@
 </head>
 <body class="bg-gradient-to-br from-slate-50 via-digiblue-100/30 to-lilac-100/40 min-h-screen text-slate-800 font-sans antialiased pb-12">
 
-    <!-- 1. MODAL WELCOMING & CHECK-IN -->
-    <div id="welcome-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-md">
-        <div class="glass-panel w-full max-w-lg rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/80">
+    <!-- 1. MODAL WELCOMING & CHECK-IN (SCROLLABLE) -->
+    <div id="welcome-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-md overflow-y-auto">
+        <div class="glass-panel w-full max-w-lg rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/80 my-8 max-h-[90vh] overflow-y-auto">
             <div class="text-center mb-6">
                 <span class="inline-block px-3 py-1 bg-digiblue-100 text-digiblue-600 rounded-full text-xs font-bold tracking-wide uppercase mb-2">
                     <i class="fa-solid fa-rocket mr-1"></i> Pre-Session Check-In
@@ -206,7 +206,7 @@
             </div>
         </div>
 
-        <!-- 3. PUSAT BAHAN PEMBELAJARAN (PREVIEW DRIVE PPT & MODUL) -->
+        <!-- 3. PUSAT BAHAN PEMBELAJARAN (PREVIEW DRIVE PPT & MODUL PDF) -->
         <section id="tab-materi" class="tab-content block">
             <div class="glass-panel p-6 rounded-3xl shadow-sm mb-6">
                 <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 border-b border-slate-200/60 mb-6 gap-4">
@@ -214,7 +214,7 @@
                         <h2 class="text-xl font-extrabold text-slate-800 flex items-center">
                             <i class="fa-solid fa-book-open text-digiblue-500 mr-2"></i> Pusat Bahan Pembelajaran (Preview Drive)
                         </h2>
-                        <p class="text-xs text-slate-500 mt-0.5">Akses materi presentasi (PPT) dan Modul Teks interaktif langsung dari Google Drive</p>
+                        <p class="text-xs text-slate-500 mt-0.5">Akses materi presentasi (PPT) dan Modul PDF langsung dengan mode preview</p>
                     </div>
                     <div class="flex items-center space-x-3">
                         <div class="bg-slate-200/60 p-1 rounded-2xl flex text-xs font-bold">
@@ -222,7 +222,7 @@
                                 <i class="fa-solid fa-display mr-1"></i> Preview PPT / Slide
                             </button>
                             <button onclick="setMaterialMode('textual')" id="btn-mode-textual" class="px-4 py-1.5 rounded-xl text-slate-600 hover:text-slate-900 transition">
-                                <i class="fa-solid fa-file-lines mr-1"></i> Modul Tekstual
+                                <i class="fa-solid fa-file-pdf mr-1"></i> Preview Modul PDF
                             </button>
                         </div>
                     </div>
@@ -233,44 +233,24 @@
                     <div class="w-full rounded-2xl overflow-hidden bg-slate-900 shadow-inner border border-slate-700 relative">
                         <div class="p-3 bg-slate-800 text-white text-xs flex justify-between items-center">
                             <span class="font-semibold"><i class="fa-brands fa-google-drive mr-1.5 text-digiblue-400"></i> Presentasi Pembelajaran (Google Drive / Canva Embed)</span>
-                            <a id="download-ppt-btn" href="https://docs.google.com/presentation" target="_blank" class="text-matcha-300 hover:underline font-bold"><i class="fa-solid fa-download mr-1"></i> Unduh File PPT</a>
+                            <a href="https://docs.google.com/presentation" target="_blank" class="text-matcha-300 hover:underline font-bold"><i class="fa-solid fa-download mr-1"></i> Buka File PPT</a>
                         </div>
                         <div class="aspect-video w-full bg-slate-950 flex items-center justify-center">
-                            <!-- Embed Google Drive Presentation iframe -->
-                            <iframe id="drive-ppt-frame" src="https://docs.google.com/presentation/d/e/2PACX-1vS.../embed?start=false&loop=false&delayms=3000" class="w-full h-full border-0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+                            <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vS.../embed?start=false&loop=false&delayms=3000" class="w-full h-full border-0" allowfullscreen="true"></iframe>
                         </div>
                     </div>
                 </div>
 
-                <!-- Mode 2: Modul PDF / Tekstual -->
+                <!-- Mode 2: Preview Modul PDF -->
                 <div id="material-textual" class="hidden">
-                    <div class="flex justify-between items-center mb-4 bg-white/40 p-3 rounded-2xl border border-white">
-                        <span class="text-xs font-bold text-slate-600">Opsi Aksesibilitas:</span>
-                        <button onclick="toggleDyslexicFont()" id="btn-dyslexic" class="px-3 py-1.5 bg-lilac-100 text-lilac-600 hover:bg-lilac-200 rounded-xl text-xs font-bold transition">
-                            <i class="fa-solid fa-font mr-1"></i> Font Ramah Disleksia: OFF
-                        </button>
-                    </div>
-
-                    <div id="textual-reader" class="bg-white/80 p-6 sm:p-8 rounded-2xl border border-slate-200 text-sm leading-relaxed space-y-4 max-h-[500px] overflow-y-auto">
-                        <h3 class="text-lg font-bold text-slate-800 border-b pb-2">Modul Utama: Eksplorasi Kota Digital & Etika Netiket</h3>
-                        <p><strong>Ruang Publik Virtual</strong> adalah ruang bersama di dunia maya tempat masyarakat berinteraksi, berdiskusi, dan membagikan informasi tanpa batasan jarak.</p>
-                        <h4 class="font-bold text-digiblue-600 mt-4">Kategori Ruang Publik Virtual:</h4>
-                        <ul class="list-disc pl-5 space-y-1 text-slate-700">
-                            <li><strong>Media Sosial:</strong> Instagram, TikTok, Facebook (jejaring sosial & konten visual).</li>
-                            <li><strong>Aplikasi Pesan Instan:</strong> WhatsApp, Telegram (komunikasi personal & grup chat).</li>
-                            <li><strong>Platform Berbagi Media:</strong> YouTube, Vimeo (publikasi konten audio-visual).</li>
-                            <li><strong>Portal Berita & Forum:</strong> Kompas.com, Reddit, Discord (diskusi topik & informasi).</li>
-                        </ul>
-                        <div class="p-4 bg-warmorange-100/60 border-l-4 border-warmorange-500 rounded-r-xl mt-4">
-                            <h5 class="font-bold text-warmorange-600 text-xs uppercase">Prinsip 3S (Saring Sebelum Sharing) & Netiket</h5>
-                            <p class="text-xs text-slate-700 mt-1">Selalu saring informasi sebelum membagikannya. Komentar toksik di internet akan terekam permanen sebagai jejak digital yang memengaruhi masa depan.</p>
+                    <div class="w-full rounded-2xl overflow-hidden bg-slate-900 shadow-inner border border-slate-700 relative">
+                        <div class="p-3 bg-slate-800 text-white text-xs flex justify-between items-center">
+                            <span class="font-semibold"><i class="fa-solid fa-file-pdf mr-1.5 text-red-400"></i> Modul Pembelajaran Digital (PDF Preview)</span>
+                            <a href="https://drive.google.com" target="_blank" class="text-matcha-300 hover:underline font-bold"><i class="fa-solid fa-download mr-1"></i> Unduh Modul PDF</a>
                         </div>
-                    </div>
-
-                    <div class="mt-4 flex justify-end">
-                        <a href="https://drive.google.com" target="_blank" class="px-4 py-2 bg-matcha-500 text-white rounded-xl text-xs font-bold hover:bg-matcha-600 transition">
-                            <i class="fa-solid fa-file-pdf mr-1"></i> Unduh Modul PDF Lengkap
-                        </a>
+                        <div class="h-[500px] w-full bg-slate-950 flex items-center justify-center">
+                            <iframe src="https://docs.google.com/gview?url=https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf&embedded=true" class="w-full h-full border-0"></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -330,7 +310,7 @@
             </div>
         </section>
 
-        <!-- 5. LKPD ONLINE (DUA STUDI KASUS DENGAN KLUE BERJENJANG) -->
+        <!-- 5. LKPD ONLINE (GERBANG KODE SANDI & KESIMPULAN KOLOM TUNGGAL) -->
         <section id="tab-lkpd" class="tab-content hidden">
             <div class="glass-panel p-6 rounded-3xl shadow-sm mb-6">
                 <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 border-b border-slate-200/60 mb-6 gap-2">
@@ -338,7 +318,7 @@
                         <h2 class="text-xl font-extrabold text-slate-800 flex items-center">
                             <i class="fa-solid fa-clipboard-list text-lilac-500 mr-2"></i> LKPD Online Kelompok (Studi Kasus Detektif Digital)
                         </h2>
-                        <p class="text-xs text-slate-500">Pilih salah satu studi kasus dan selesaikan 5 klue berjenjang serta tabel kesimpulan 5W+1H.</p>
+                        <p class="text-xs text-slate-500">Masukkan kode sandi yang diberikan guru melalui postingan peta kota digital untuk membuka studi kasus.</p>
                     </div>
                 </div>
 
@@ -351,24 +331,34 @@
                     </div>
                 </div>
 
-                <!-- Case Selection -->
-                <div id="case-selector" class="mb-6">
+                <!-- Case Selection with Password Gate -->
+                <div id="case-selector" class="mb-6 space-y-4">
                     <h3 class="text-xs font-bold uppercase tracking-wider text-slate-700 mb-3">Pilih Studi Kasus Kelompok:</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div id="case-card-1" class="glass-card p-4 rounded-2xl border border-slate-200 hover:border-lilac-400 transition cursor-pointer" onclick="selectCase(1)">
-                            <span class="text-[10px] font-bold bg-lilac-100 text-lilac-600 px-2 py-0.5 rounded-full">Studi Kasus 1</span>
-                            <h4 class="font-bold text-sm text-slate-800 mt-2">"Jejak Retak di Ruang Maya" (Rian - E-Sport & Jejak Digital)</h4>
-                            <p class="text-xs text-slate-600 mt-1">Rian meluapkan emosi kekalahan game di medsos, komentar toxic, dan dampaknya saat seleksi beasiswa.</p>
+                    
+                    <!-- Kasus 1 Card & Gate -->
+                    <div class="glass-card p-5 rounded-2xl border border-slate-200 space-y-3">
+                        <span class="text-[10px] font-bold bg-lilac-100 text-lilac-600 px-2 py-0.5 rounded-full">Studi Kasus 1</span>
+                        <h4 class="font-bold text-sm text-slate-800">"Jejak Retak di Ruang Maya" (Rian - E-Sport & Jejak Digital)</h4>
+                        <p class="text-xs text-slate-600 italic bg-white/70 p-3 rounded-xl border">"Temukan aku di antara peta kota digital yang ditampilkan gurumu. Aku ada di titik dimana kamu bisa mengakses banyak informasi. Orang bisa menyebutku sebagai perpustakaan digital"</p>
+                        <div class="flex space-x-2">
+                            <input type="password" id="pass-case-1" placeholder="Masukkan Kode Sandi (4 Digit)..." class="flex-1 px-3 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-lilac-400">
+                            <button onclick="unlockCase(1)" class="px-4 py-2 bg-lilac-500 text-white rounded-xl text-xs font-bold hover:bg-lilac-600 transition">Buka Studi Kasus 1</button>
                         </div>
-                        <div id="case-card-2" class="glass-card p-4 rounded-2xl border border-slate-200 hover:border-digiblue-400 transition cursor-pointer" onclick="selectCase(2)">
-                            <span class="text-[10px] font-bold bg-digiblue-100 text-digiblue-600 px-2 py-0.5 rounded-full">Studi Kasus 2</span>
-                            <h4 class="font-bold text-sm text-slate-800 mt-2">"Misteri Berita Viral di Grup Warga" (Kirana & Hoaks Phising)</h4>
-                            <p class="text-xs text-slate-600 mt-1">Kirana menyebar tautan palsu bantuan dana di grup warga tanpa verifikasi dan merespon warga dengan emosi.</p>
+                    </div>
+
+                    <!-- Kasus 2 Card & Gate -->
+                    <div class="glass-card p-5 rounded-2xl border border-slate-200 space-y-3">
+                        <span class="text-[10px] font-bold bg-digiblue-100 text-digiblue-600 px-2 py-0.5 rounded-full">Studi Kasus 2</span>
+                        <h4 class="font-bold text-sm text-slate-800">"Misteri Berita Viral di Grup Warga" (Kirana & Hoaks Phising)</h4>
+                        <p class="text-xs text-slate-600 italic bg-white/70 p-3 rounded-xl border">"Temukan aku di antara peta kota digital yang ditampilkan gurumu. Aku ada di titik orang-orang senang berkumpul dan menghabiskan waktu, untuk memposting foto/video keseharian mereka"</p>
+                        <div class="flex space-x-2">
+                            <input type="password" id="pass-case-2" placeholder="Masukkan Kode Sandi (4 Digit)..." class="flex-1 px-3 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-digiblue-400">
+                            <button onclick="unlockCase(2)" class="px-4 py-2 bg-digiblue-500 text-white rounded-xl text-xs font-bold hover:bg-digiblue-600 transition">Buka Studi Kasus 2</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- LKPD Workspace (Clues & 5W1H) -->
+                <!-- LKPD Workspace (Clues & Single Conclusion Box) -->
                 <div id="lkpd-workspace" class="hidden space-y-4">
                     <div class="p-3 bg-matcha-100/60 rounded-xl border border-matcha-300 text-xs font-bold text-matcha-600 flex items-center justify-between">
                         <span><i class="fa-solid fa-lock-open mr-1"></i> Kasus Aktif: <span id="locked-case-title">-</span></span>
@@ -410,20 +400,15 @@
                         <textarea id="clue-5" disabled oninput="validateClues()" rows="2" placeholder="🔒 Terkunci..." class="w-full p-2.5 rounded-xl border border-slate-200 text-xs disabled:bg-slate-100 disabled:cursor-not-allowed"></textarea>
                     </div>
 
-                    <!-- 5W1H Conclusion Table -->
-                    <div class="bg-gradient-to-r from-lilac-100/50 to-digiblue-100/50 p-5 rounded-2xl border border-lilac-200 mt-6">
-                        <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wide mb-3">Lembar Kerja Kesimpulan (5W + 1H) 📝</h4>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs mb-4">
-                            <div><label class="font-bold">What (Masalah):</label><input type="text" id="w-what" disabled placeholder="🔒 Selesaikan Clue 1-5..." class="w-full p-2 mt-1 rounded-xl border bg-white disabled:bg-slate-100"></div>
-                            <div><label class="font-bold">Who (Pihak Terlibat):</label><input type="text" id="w-who" disabled placeholder="🔒 Selesaikan Clue 1-5..." class="w-full p-2 mt-1 rounded-xl border bg-white disabled:bg-slate-100"></div>
-                            <div><label class="font-bold">Where (Lokasi/Platform):</label><input type="text" id="w-where" disabled placeholder="🔒 Selesaikan Clue 1-5..." class="w-full p-2 mt-1 rounded-xl border bg-white disabled:bg-slate-100"></div>
-                            <div><label class="font-bold">When (Waktu Risiko):</label><input type="text" id="w-when" disabled placeholder="🔒 Selesaikan Clue 1-5..." class="w-full p-2 mt-1 rounded-xl border bg-white disabled:bg-slate-100"></div>
-                            <div><label class="font-bold">Why (Penyebab):</label><input type="text" id="w-why" disabled placeholder="🔒 Selesaikan Clue 1-5..." class="w-full p-2 mt-1 rounded-xl border bg-white disabled:bg-slate-100"></div>
-                            <div><label class="font-bold">How (Solusi):</label><input type="text" id="w-how" disabled placeholder="🔒 Selesaikan Clue 1-5..." class="w-full p-2 mt-1 rounded-xl border bg-white disabled:bg-slate-100"></div>
-                        </div>
+                    <!-- Lembar Kesimpulan (Kolom Tunggal untuk Mengetik) -->
+                    <div class="bg-gradient-to-r from-lilac-100/50 to-digiblue-100/50 p-5 rounded-2xl border border-lilac-200 mt-6 space-y-3">
+                        <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wide">Lembar Kesimpulan Analisis Kelompok 📝</h4>
+                        <p class="text-[11px] text-slate-600">Tuliskan kesimpulan komprehensif kelompokmu (menjawab unsur What, Who, Where, When, Why, How):</p>
+                        
+                        <textarea id="single-conclusion" disabled rows="5" placeholder="🔒 Selesaikan Clue 1 sampai 5 terlebih dahulu untuk membuka kolom kesimpulan ini..." class="w-full p-3 rounded-xl border bg-white text-xs focus:ring-2 focus:ring-lilac-400 focus:outline-none disabled:bg-slate-100 disabled:cursor-not-allowed"></textarea>
 
-                        <div class="p-3 bg-amber-50 rounded-xl border border-amber-200 text-xs mb-4 text-amber-800">
-                            <i class="fa-solid fa-palette mr-1"></i> <strong>Tugas Poster Canva:</strong> Buat poster edukatif bertema studi kasus ini dengan slogan menarik, 3 aturan netiket, manfaat vs risiko, dan unggah link hasilnya pada menu Tugas.
+                        <div class="p-3 bg-amber-50 rounded-xl border border-amber-200 text-xs text-amber-800">
+                            <i class="fa-solid fa-palette mr-1"></i> <strong>Tugas Poster Canva:</strong> Buat poster edukatif bertema studi kasus ini dan kumpulkan tautannya pada menu Tugas.
                         </div>
 
                         <button onclick="saveLKPD()" id="btn-save-lkpd" disabled class="w-full py-3 bg-lilac-500 text-white font-bold rounded-xl text-xs hover:bg-lilac-600 transition disabled:opacity-50 disabled:cursor-not-allowed">
@@ -462,7 +447,7 @@
             </div>
         </section>
 
-        <!-- 7. REFLEKSI AKHIR & EVALUASI (TERKUNCI JIKA TUGAS BELUM SELESAI) -->
+        <!-- 7. REFLEKSI AKHIR & EVALUASI -->
         <section id="tab-refleksi" class="tab-content hidden">
             <div class="glass-panel p-6 rounded-3xl shadow-sm mb-6 max-w-2xl mx-auto">
                 <div class="mb-6 text-center">
@@ -470,7 +455,6 @@
                     <p class="text-xs text-slate-500 mt-1">Mari renungkan apa yang telah kamu pelajari.</p>
                 </div>
 
-                <!-- Warning jika tugas belum beres -->
                 <div id="reflection-lock-banner" class="hidden mb-4 p-4 bg-red-50 border border-red-200 rounded-2xl text-xs text-red-700 flex items-center">
                     <i class="fa-solid fa-triangle-exclamation text-red-500 text-lg mr-2"></i>
                     <span><strong>Perhatian:</strong> Kamu belum dapat mengisi refleksi akhir karena belum menyelesaikan dan mengumpulkan tugas LKPD/Poster! Selesaikan tugas terlebih dahulu di menu Tugas.</span>
@@ -500,7 +484,7 @@
 
     </main>
 
-    <!-- POP-UP KUIS INTERAKTIF (FEEDBACK EMOJI & AUDIO) -->
+    <!-- POP-UP KUIS INTERAKTIF -->
     <div id="quiz-feedback-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-md">
         <div class="glass-panel w-full max-w-sm rounded-3xl p-6 text-center border border-white shadow-2xl">
             <div id="quiz-feedback-icon" class="text-5xl mb-3">🎉</div>
@@ -520,7 +504,7 @@
         </div>
     </div>
 
-    <!-- PANEL GURU REAL-TIME & DOWNLOAD REKAP -->
+    <!-- PANEL GURU REAL-TIME (DENGAN PROTEKSI SANDI budi149) -->
     <div id="teacher-dashboard-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md">
         <div class="glass-panel w-full max-w-4xl rounded-3xl p-6 shadow-2xl border border-white max-h-[90vh] flex flex-col">
             <div class="flex justify-between items-center pb-4 border-b border-slate-200 mb-4">
@@ -552,10 +536,10 @@
         </div>
     </div>
 
-    <!-- 8. JAVASCRIPT LOGIC & AUDIO SYNTHESIS -->
+    <!-- 8. JAVASCRIPT LOGIC -->
     <script>
-        // CONFIG WEB APP GURU (GOOGLE SHEETS WEB APP URL)
         const GOOGLE_SHEETS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbx.../exec'; 
+        const TEACHER_PASSWORD = 'budi149';
 
         const CONFIG_MATERI = {
             guru: {
@@ -569,12 +553,10 @@
         let userData = {
             name: '', class: '', absent: '', mood: '', readiness: '', triggerAns: '',
             simulations: { sim1: false, sim2: false, sim3: false },
-            lkpd: { locked: false, caseId: '', caseTitle: '', clue1: '', clue2: '', clue3: '', clue4: '', clue5: '', what: '', who: '', where: '', when: '', why: '', how: '' },
+            lkpd: { locked: false, caseId: '', caseTitle: '', clue1: '', clue2: '', clue3: '', clue4: '', clue5: '', conclusion: '' },
             taskSubmitted: false, taskUrl: '', taskNote: '',
             reflectionSubmitted: false
         };
-
-        let activeCaseIndex = 0;
 
         document.addEventListener('DOMContentLoaded', () => {
             initTeacherConfig();
@@ -650,12 +632,6 @@
             }
         }
 
-        function toggleDyslexicFont() {
-            const reader = document.getElementById('textual-reader');
-            reader.classList.toggle('font-dyslexic');
-        }
-
-        /* WEB AUDIO API SOUND FX FOR KUIS POP-UP */
         function playSound(type) {
             try {
                 const ctx = new (window.AudioContext || window.webkitAudioContext)();
@@ -664,8 +640,8 @@
                 osc.connect(gain); gain.connect(ctx.destination);
                 
                 if (type === 'success') {
-                    osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5
-                    osc.frequency.setValueAtTime(880, ctx.currentTime + 0.1); // A5
+                    osc.frequency.setValueAtTime(587.33, ctx.currentTime);
+                    osc.frequency.setValueAtTime(880, ctx.currentTime + 0.1);
                     gain.gain.setValueAtTime(0.2, ctx.currentTime);
                     gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
                     osc.start(); osc.stop(ctx.currentTime + 0.4);
@@ -734,9 +710,16 @@
             saveState();
         }
 
-        /* LKPD LOGIC & CLUE SYSTEM */
-        function selectCase(id) {
-            activeCaseIndex = id;
+        /* LKPD GATE PASSWORDS & CLUE SYSTEM */
+        function unlockCase(id) {
+            const passInput = document.getElementById(`pass-case-${id}`).value.trim();
+            const correctPass = id === 1 ? '9147' : '8514';
+
+            if (passInput !== correctPass) {
+                alert('Kode sandi salah! Perhatikan petunjuk dari guru di depan kelas.');
+                return;
+            }
+
             userData.lkpd.locked = true;
             userData.lkpd.caseId = id;
             userData.lkpd.caseTitle = id === 1 ? "Studi Kasus 1: Jejak Retak di Ruang Maya (Rian)" : "Studi Kasus 2: Misteri Berita Viral di Grup Warga (Kirana)";
@@ -774,12 +757,9 @@
             if(c4.value.trim().length > 2) { c5.disabled = false; c5.placeholder = "Tuliskan jawaban Clue 5..."; document.getElementById('clue-desc-5').innerText = "🔓 Terbuka"; }
 
             if(c5.value.trim().length > 2) {
-                document.getElementById('w-what').disabled = false;
-                document.getElementById('w-who').disabled = false;
-                document.getElementById('w-where').disabled = false;
-                document.getElementById('w-when').disabled = false;
-                document.getElementById('w-why').disabled = false;
-                document.getElementById('w-how').disabled = false;
+                const singleCon = document.getElementById('single-conclusion');
+                singleCon.disabled = false;
+                singleCon.placeholder = "Tuliskan kesimpulan komprehensif kelompokmu di sini...";
                 document.getElementById('btn-save-lkpd').disabled = false;
             }
         }
@@ -790,12 +770,7 @@
             userData.lkpd.clue3 = document.getElementById('clue-3').value;
             userData.lkpd.clue4 = document.getElementById('clue-4').value;
             userData.lkpd.clue5 = document.getElementById('clue-5').value;
-            userData.lkpd.what = document.getElementById('w-what').value;
-            userData.lkpd.who = document.getElementById('w-who').value;
-            userData.lkpd.where = document.getElementById('w-where').value;
-            userData.lkpd.when = document.getElementById('w-when').value;
-            userData.lkpd.why = document.getElementById('w-why').value;
-            userData.lkpd.how = document.getElementById('w-how').value;
+            userData.lkpd.conclusion = document.getElementById('single-conclusion').value;
 
             updateTPIndicator('tp-1');
             updateTPIndicator('tp-4');
@@ -870,8 +845,14 @@
             }
         }
 
-        /* TEACHER DASHBOARD & REALTIME DOWNLOAD */
+        /* PASSWORD PROTECTED TEACHER DASHBOARD */
         function openTeacherDashboard() {
+            const pwd = prompt("Masukkan Sandi Panel Guru:");
+            if (pwd !== TEACHER_PASSWORD) {
+                alert("Kata sandi salah! Akses ditolak.");
+                return;
+            }
+
             const tbody = document.getElementById('teacher-table-body');
             tbody.innerHTML = '';
             let allStudents = JSON.parse(localStorage.getItem('teacher_all_students_data') || '[]');
