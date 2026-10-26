@@ -35,14 +35,14 @@
 
     <style>
         .glass-panel {
-            background: rgba(255, 255, 255, 0.70);
+            background: rgba(255, 255, 255, 0.75);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.8);
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
         }
         .glass-card {
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.55);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.6);
         }
@@ -120,7 +120,7 @@
         </div>
     </div>
 
-    <!-- 2. STICKY NAVBAR DENGAN TOMBOL KELUAR -->
+    <!-- 2. STICKY NAVBAR -->
     <header class="sticky top-0 z-40 glass-panel border-b border-white/60 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
             <div class="flex items-center space-x-3">
@@ -253,14 +253,14 @@
             </div>
         </section>
 
-        <!-- 4. MINI KUIS INTERAKTIF & POSISI TERKUNCI JIKA SUDAH BENAR -->
+        <!-- 4. MINI KUIS INTERAKTIF -->
         <section id="tab-kuis" class="tab-content hidden">
             <div class="glass-panel p-6 rounded-3xl shadow-sm mb-6">
                 <div class="mb-6">
                     <h2 class="text-xl font-extrabold text-slate-800 flex items-center">
                         <i class="fa-solid fa-gamepad text-warmorange-500 mr-2"></i> Simulasi Kota Digital & Mini Kuis
                     </h2>
-                    <p class="text-xs text-slate-500">Pop-up feedback akan muncul. Jika jawaban sudah benar, posisi tombol dan input akan terkunci permanen.</p>
+                    <p class="text-xs text-slate-500">Pop-up feedback akan muncul. Jika jawaban sudah benar, kuis akan terkunci secara otomatis.</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -316,7 +316,7 @@
             </div>
         </section>
 
-        <!-- 5. LKPD ONLINE -->
+        <!-- 5. LKPD ONLINE (CLUE QUESTIONS ALWAYS VISIBLE & STAY intact) -->
         <section id="tab-lkpd" class="tab-content hidden">
             <div class="glass-panel p-6 rounded-3xl shadow-sm mb-6">
                 <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 border-b border-slate-200/60 mb-6 gap-2">
@@ -366,34 +366,51 @@
                         <span class="text-[10px] bg-white px-2 py-0.5 rounded-full text-slate-600">Validasi Berjenjang Active</span>
                     </div>
 
+                    <!-- Clue 1 -->
                     <div class="bg-white/70 p-4 rounded-2xl border border-slate-200">
                         <label class="block text-xs font-bold text-slate-700 mb-1">Clue 1: Klasifikasi Ruang Publik Virtual (C2)</label>
-                        <p class="text-[11px] text-slate-500 mb-2" id="clue-desc-1">-</p>
-                        <textarea id="clue-1" oninput="validateClues()" rows="2" placeholder="Tuliskan klasifikasi platform..." class="w-full p-2.5 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-lilac-400 focus:outline-none"></textarea>
+                        <p class="text-[11px] text-slate-600 mb-2 font-medium" id="clue-desc-1">-</p>
+                        <textarea id="clue-1" oninput="validateClues()" rows="2" placeholder="Tuliskan analisis klasifikasi platform digital..." class="w-full p-2.5 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-lilac-400 focus:outline-none"></textarea>
                     </div>
 
+                    <!-- Clue 2 -->
                     <div class="bg-white/70 p-4 rounded-2xl border border-slate-200">
-                        <label class="block text-xs font-bold text-slate-700 mb-1">Clue 2: Perbaikan Netiket Komunikasi (C3)</label>
-                        <p class="text-[11px] text-slate-500 mb-2" id="clue-desc-2">🔒 Jawab Clue 1 terlebih dahulu...</p>
-                        <textarea id="clue-2" disabled oninput="validateClues()" rows="2" placeholder="🔒 Terkunci..." class="w-full p-2.5 rounded-xl border border-slate-200 text-xs disabled:bg-slate-100 disabled:cursor-not-allowed"></textarea>
+                        <div class="flex items-center justify-between mb-1">
+                            <label class="block text-xs font-bold text-slate-700">Clue 2: Perbaikan Netiket Komunikasi (C3)</label>
+                            <span id="clue-status-2" class="text-[10px] font-bold text-amber-600 bg-amber-100 px-2 py-0.5 rounded-full">🔒 Terkunci (Isi Clue 1)</span>
+                        </div>
+                        <p class="text-[11px] text-slate-600 mb-2 font-medium" id="clue-desc-2">-</p>
+                        <textarea id="clue-2" disabled oninput="validateClues()" rows="2" placeholder="🔒 Terkunci hingga Clue 1 diisi..." class="w-full p-2.5 rounded-xl border border-slate-200 text-xs disabled:bg-slate-100 disabled:cursor-not-allowed"></textarea>
                     </div>
 
+                    <!-- Clue 3 -->
                     <div class="bg-white/70 p-4 rounded-2xl border border-slate-200">
-                        <label class="block text-xs font-bold text-slate-700 mb-1">Clue 3: Manfaat Positif Ruang Publik Virtual (C4)</label>
-                        <p class="text-[11px] text-slate-500 mb-2" id="clue-desc-3">🔒 Jawab Clue 2 terlebih dahulu...</p>
-                        <textarea id="clue-3" disabled oninput="validateClues()" rows="2" placeholder="🔒 Terkunci..." class="w-full p-2.5 rounded-xl border border-slate-200 text-xs disabled:bg-slate-100 disabled:cursor-not-allowed"></textarea>
+                        <div class="flex items-center justify-between mb-1">
+                            <label class="block text-xs font-bold text-slate-700">Clue 3: Manfaat Positif Ruang Publik Virtual (C4)</label>
+                            <span id="clue-status-3" class="text-[10px] font-bold text-amber-600 bg-amber-100 px-2 py-0.5 rounded-full">🔒 Terkunci (Isi Clue 2)</span>
+                        </div>
+                        <p class="text-[11px] text-slate-600 mb-2 font-medium" id="clue-desc-3">-</p>
+                        <textarea id="clue-3" disabled oninput="validateClues()" rows="2" placeholder="🔒 Terkunci hingga Clue 2 diisi..." class="w-full p-2.5 rounded-xl border border-slate-200 text-xs disabled:bg-slate-100 disabled:cursor-not-allowed"></textarea>
                     </div>
 
+                    <!-- Clue 4 -->
                     <div class="bg-white/70 p-4 rounded-2xl border border-slate-200">
-                        <label class="block text-xs font-bold text-slate-700 mb-1">Clue 4: Risiko / Dampak Negatif (C4)</label>
-                        <p class="text-[11px] text-slate-500 mb-2" id="clue-desc-4">🔒 Jawab Clue 3 terlebih dahulu...</p>
-                        <textarea id="clue-4" disabled oninput="validateClues()" rows="2" placeholder="🔒 Terkunci..." class="w-full p-2.5 rounded-xl border border-slate-200 text-xs disabled:bg-slate-100 disabled:cursor-not-allowed"></textarea>
+                        <div class="flex items-center justify-between mb-1">
+                            <label class="block text-xs font-bold text-slate-700">Clue 4: Risiko / Dampak Negatif (C4)</label>
+                            <span id="clue-status-4" class="text-[10px] font-bold text-amber-600 bg-amber-100 px-2 py-0.5 rounded-full">🔒 Terkunci (Isi Clue 3)</span>
+                        </div>
+                        <p class="text-[11px] text-slate-600 mb-2 font-medium" id="clue-desc-4">-</p>
+                        <textarea id="clue-4" disabled oninput="validateClues()" rows="2" placeholder="🔒 Terkunci hingga Clue 3 diisi..." class="w-full p-2.5 rounded-xl border border-slate-200 text-xs disabled:bg-slate-100 disabled:cursor-not-allowed"></textarea>
                     </div>
 
+                    <!-- Clue 5 -->
                     <div class="bg-white/70 p-4 rounded-2xl border border-slate-200">
-                        <label class="block text-xs font-bold text-slate-700 mb-1">Clue 5: Evaluasi Jejak Digital (C5)</label>
-                        <p class="text-[11px] text-slate-500 mb-2" id="clue-desc-5">🔒 Jawab Clue 4 terlebih dahulu...</p>
-                        <textarea id="clue-5" disabled oninput="validateClues()" rows="2" placeholder="🔒 Terkunci..." class="w-full p-2.5 rounded-xl border border-slate-200 text-xs disabled:bg-slate-100 disabled:cursor-not-allowed"></textarea>
+                        <div class="flex items-center justify-between mb-1">
+                            <label class="block text-xs font-bold text-slate-700">Clue 5: Evaluasi Jejak Digital (C5)</label>
+                            <span id="clue-status-5" class="text-[10px] font-bold text-amber-600 bg-amber-100 px-2 py-0.5 rounded-full">🔒 Terkunci (Isi Clue 4)</span>
+                        </div>
+                        <p class="text-[11px] text-slate-600 mb-2 font-medium" id="clue-desc-5">-</p>
+                        <textarea id="clue-5" disabled oninput="validateClues()" rows="2" placeholder="🔒 Terkunci hingga Clue 4 diisi..." class="w-full p-2.5 rounded-xl border border-slate-200 text-xs disabled:bg-slate-100 disabled:cursor-not-allowed"></textarea>
                     </div>
 
                     <div class="bg-gradient-to-r from-lilac-100/50 to-digiblue-100/50 p-5 rounded-2xl border border-lilac-200 mt-6 space-y-3">
@@ -499,13 +516,13 @@
         </div>
     </div>
 
-    <!-- PANEL GURU REAL-TIME -->
+    <!-- PANEL GURU REAL-TIME (LENGKAP DATA PRESENSI, KUIS, LKPD, TUGAS, & REFLEKSI) -->
     <div id="teacher-dashboard-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md">
         <div class="glass-panel w-full max-w-5xl rounded-3xl p-6 shadow-2xl border border-white max-h-[90vh] flex flex-col">
             <div class="flex justify-between items-center pb-4 border-b border-slate-200 mb-4">
                 <div>
                     <h3 class="text-lg font-extrabold text-slate-800"><i class="fa-solid fa-chalkboard-user text-digiblue-500 mr-2"></i> Panel Real-Time Guru</h3>
-                    <p class="text-xs text-slate-500">Pantau percobaan kuis, isian LKPD, tugas, dan refleksi seluruh siswa</p>
+                    <p class="text-xs text-slate-500">Rekam Jejak Presensi, Percobaan Kuis, LKPD, Tugas, & Refleksi Siswa</p>
                 </div>
                 <div class="space-x-2">
                     <button onclick="downloadTeacherReport()" class="px-3 py-1.5 bg-matcha-500 text-white rounded-xl text-xs font-bold hover:bg-matcha-600 transition"><i class="fa-solid fa-file-excel mr-1"></i> Download Rekap (.CSV)</button>
@@ -531,7 +548,7 @@
         </div>
     </div>
 
-    <!-- MODAL DETAIL SISWA -->
+    <!-- MODAL DETAIL SISWA UNTUK GURU -->
     <div id="student-detail-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md">
         <div class="glass-panel w-full max-w-2xl rounded-3xl p-6 shadow-2xl border border-white max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center pb-3 border-b border-slate-200 mb-4">
@@ -621,7 +638,7 @@
             saveState();
             document.getElementById('welcome-modal').classList.add('hidden');
             updateUserGreeting();
-            submitToTeacherServer({ type: 'PRESENSI', detail: 'Check-in berhasil' });
+            submitToTeacherServer({ type: 'PRESENSI', detail: 'Check-in presensi berhasil' });
         }
 
         function updateUserGreeting() {
@@ -692,7 +709,7 @@
             }
         }
 
-        /* MINI KUIS LOGIC (FEEDBACK POPUP MUNCUL, LALU POSISI TERKUNCI JIKA BENAR) */
+        /* MINI KUIS LOGIC (FEEDBACK POPUP & LOCK UPON SUCCESS) */
         function submitSim1() {
             if (userData.quizPassed.sim1) return;
             userData.quizAttempts.sim1++;
@@ -762,7 +779,7 @@
             btn.innerText = "Terkunci (Selesai)";
         }
 
-        /* LKPD GATE PASSWORDS & CLUE SYSTEM */
+        /* LKPD GATE PASSWORDS & CLUE SYSTEM (QUESTIONS STAY VISIBLE AT ALL TIMES) */
         function unlockCase(id) {
             const passInput = document.getElementById(`pass-case-${id}`).value.trim();
             const correctPass = id === 1 ? '9147' : '8514';
@@ -782,16 +799,16 @@
 
             if (id === 1) {
                 document.getElementById('clue-desc-1').innerText = "Rian meluapkan emosi di media sosial, mengunggah video game, dan berdiskusi di forum komunitas game. Kelompokkan ke dalam jenis ruang publik virtual!";
-                document.getElementById('clue-desc-2').innerText = "Perbaiki 3 komentar toksik Rian saat emosi menjadi kalimat santun.";
-                document.getElementById('clue-desc-3').innerText = "Sebutkan minimal 2 dampak positif/manfaat ruang publik virtual dari kasus Rian.";
-                document.getElementById('clue-desc-4').innerText = "Sebutkan minimal 2 dampak negatif/risiko ruang publik virtual.";
-                document.getElementById('clue-desc-5').innerText = "Sebutkan minimal 3 alasan logis mengapa komentar toksik berisiko bagi beasiswa Rian.";
+                document.getElementById('clue-desc-2').innerText = "Perbaiki 3 komentar toksik Rian saat emosi (tentang kekalahan game, panitia, & lawan) menjadi kalimat santun dan konstruktif.";
+                document.getElementById('clue-desc-3').innerText = "Sebutkan minimal 2 dampak positif/manfaat dari penggunaan ruang publik virtual berdasarkan kasus Rian atau pengalamanmu!";
+                document.getElementById('clue-desc-4').innerText = "Sebutkan minimal 2 dampak negatif/risiko tersembunyi yang dialami Rian ketika tidak bijak di ruang publik virtual!";
+                document.getElementById('clue-desc-5').innerText = "Tentukan minimal 3 alasan logis mengapa unggahan/komentar toksik tersebut berisiko bagi seleksi beasiswa & masa depan Rian!";
             } else {
-                document.getElementById('clue-desc-1').innerText = "Kirana berinteraksi via pesan instan, medsos, dan portal berita. Kelompokkan jenis ruang publik virtualnya!";
-                document.getElementById('clue-desc-2').innerText = "Perbaiki 3 komentar menuduh Kirana di grup warga menjadi kalimat konstruktif.";
-                document.getElementById('clue-desc-3').innerText = "Sebutkan minimal 2 manfaat ruang publik virtual dari kasus Kirana.";
-                document.getElementById('clue-desc-4').innerText = "Sebutkan minimal 2 risiko hoaks dan phising bagi Kirana.";
-                document.getElementById('clue-desc-5').innerText = "Sebutkan minimal 3 alasan logis risiko menyebarkan hoaks bagi masa depan.";
+                document.getElementById('clue-desc-1').innerText = "Kirana berinteraksi via pesan instan, medsos, dan portal berita. Kelompokkan jenis platform digital tersebut!";
+                document.getElementById('clue-desc-2').innerText = "Perbaiki 3 komentar emosional Kirana di grup warga saat panik menjadi kalimat santun sesuai netiket.";
+                document.getElementById('clue-desc-3').innerText = "Sebutkan minimal 2 dampak positif/manfaat penggunaan ruang publik virtual berdasarkan kasus Kirana!";
+                document.getElementById('clue-desc-4').innerText = "Sebutkan minimal 2 dampak negatif/bahaya nyata (hoaks & phising) dari menyebarkan informasi tanpa verifikasi!";
+                document.getElementById('clue-desc-5').innerText = "Tentukan minimal 3 alasan logis mengapa menyebarkan hoaks berisiko bagi reputasi & masa depan seseorang!";
             }
             saveState();
         }
@@ -803,15 +820,35 @@
             const c4 = document.getElementById('clue-4');
             const c5 = document.getElementById('clue-5');
 
-            if(c1.length > 2) { c2.disabled = false; c2.placeholder = "Tuliskan jawaban Clue 2..."; document.getElementById('clue-desc-2').innerText = "🔓 Terbuka - Pertanyaan aktif"; }
-            if(c2.value.trim().length > 2) { c3.disabled = false; c3.placeholder = "Tuliskan jawaban Clue 3..."; document.getElementById('clue-desc-3').innerText = "🔓 Terbuka - Pertanyaan aktif"; }
-            if(c3.value.trim().length > 2) { c4.disabled = false; c4.placeholder = "Tuliskan jawaban Clue 4..."; document.getElementById('clue-desc-4').innerText = "🔓 Terbuka - Pertanyaan aktif"; }
-            if(c4.value.trim().length > 2) { c5.disabled = false; c5.placeholder = "Tuliskan jawaban Clue 5..."; document.getElementById('clue-desc-5').innerText = "🔓 Terbuka - Pertanyaan aktif"; }
+            if(c1.length > 2) { 
+                c2.disabled = false; 
+                c2.placeholder = "Tuliskan perbaikan netiket komentar..."; 
+                document.getElementById('clue-status-2').className = "text-[10px] font-bold text-matcha-600 bg-matcha-100 px-2 py-0.5 rounded-full";
+                document.getElementById('clue-status-2').innerText = "🔓 Terbuka - Siap Diisi";
+            }
+            if(c2.value.trim().length > 2) { 
+                c3.disabled = false; 
+                c3.placeholder = "Tuliskan manfaat positif..."; 
+                document.getElementById('clue-status-3').className = "text-[10px] font-bold text-matcha-600 bg-matcha-100 px-2 py-0.5 rounded-full";
+                document.getElementById('clue-status-3').innerText = "🔓 Terbuka - Siap Diisi";
+            }
+            if(c3.value.trim().length > 2) { 
+                c4.disabled = false; 
+                c4.placeholder = "Tuliskan dampak negatif/risiko..."; 
+                document.getElementById('clue-status-4').className = "text-[10px] font-bold text-matcha-600 bg-matcha-100 px-2 py-0.5 rounded-full";
+                document.getElementById('clue-status-4').innerText = "🔓 Terbuka - Siap Diisi";
+            }
+            if(c4.value.trim().length > 2) { 
+                c5.disabled = false; 
+                c5.placeholder = "Tuliskan evaluasi jejak digital..."; 
+                document.getElementById('clue-status-5').className = "text-[10px] font-bold text-matcha-600 bg-matcha-100 px-2 py-0.5 rounded-full";
+                document.getElementById('clue-status-5').innerText = "🔓 Terbuka - Siap Diisi";
+            }
 
             if(c5.value.trim().length > 2) {
                 const singleCon = document.getElementById('single-conclusion');
                 singleCon.disabled = false;
-                singleCon.placeholder = "Tuliskan kesimpulan komprehensif kelompokmu di sini...";
+                singleCon.placeholder = "Tuliskan kesimpulan komprehensif kelompokmu (unsur What, Who, Where, When, Why, How)...";
                 document.getElementById('btn-save-lkpd').disabled = false;
             }
         }
@@ -914,7 +951,7 @@
             }
         }
 
-        /* PASSWORD PROTECTED TEACHER DASHBOARD WITH DETAIL VIEW */
+        /* PANEL GURU DENGAN PROTEKSI SANDI & VIEW DETAIL */
         function openTeacherDashboard() {
             const pwd = prompt("Masukkan Sandi Panel Guru:");
             if (pwd !== TEACHER_PASSWORD) {
@@ -948,35 +985,37 @@
             const s = allStudents[index];
             const fd = s.fullData;
 
-            document.getElementById('modal-student-title').innerText = `Detail Jawaban: ${s.name} (Kelas ${s.class})`;
+            document.getElementById('modal-student-title').innerText = `Detail Rekam Jejak: ${s.name} (Kelas ${s.class})`;
             const content = document.getElementById('modal-student-content');
             content.innerHTML = `
                 <div class="p-3 bg-slate-100 rounded-xl space-y-1">
-                    <p><strong>Mood & Kesiapan:</strong> ${fd.mood} | Kesiapan: ${fd.readiness}%</p>
-                    <p><strong>Pertanyaan Pemantik:</strong> "${fd.triggerAns}"</p>
+                    <p class="font-bold text-slate-700">1. Presensi & Refleksi Awal:</p>
+                    <p><strong>Nama:</strong> ${fd.name} (Kelas ${fd.class}, Absen ${fd.absent})</p>
+                    <p><strong>Mood Perasaan:</strong> ${fd.mood} | <strong>Kesiapan:</strong> ${fd.readiness}%</p>
+                    <p><strong>Pertanyaan Pemantik:</strong> "${fd.triggerAns || '-'}"</p>
                 </div>
                 <div class="p-3 bg-warmorange-50 rounded-xl space-y-1">
-                    <p class="font-bold text-warmorange-700">Percobaan Kuis:</p>
-                    <p>Simulasi 1: ${fd.quizAttempts.sim1} percobaan (Status: ${fd.quizPassed.sim1 ? 'Lulus' : 'Belum'})</p>
-                    <p>Simulasi 2: ${fd.quizAttempts.sim2} percobaan (Status: ${fd.quizPassed.sim2 ? 'Lulus' : 'Belum'})</p>
-                    <p>Simulasi 3: ${fd.quizAttempts.sim3} percobaan (Status: ${fd.quizPassed.sim3 ? 'Lulus' : 'Belum'})</p>
+                    <p class="font-bold text-warmorange-700">2. Hasil Mini Kuis (Jumlah Percobaan):</p>
+                    <p>Simulasi 1 (Etika Komentar): ${fd.quizAttempts.sim1} percobaan (${fd.quizPassed.sim1 ? 'Terjawab Benar' : 'Belum'})</p>
+                    <p>Simulasi 2 (Deteksi Hoaks 3S): ${fd.quizAttempts.sim2} percobaan (${fd.quizPassed.sim2 ? 'Terjawab Benar' : 'Belum'})</p>
+                    <p>Simulasi 3 (Keamanan Privasi): ${fd.quizAttempts.sim3} percobaan (${fd.quizPassed.sim3 ? 'Terjawab Benar' : 'Belum'})</p>
                 </div>
                 <div class="p-3 bg-lilac-50 rounded-xl space-y-1">
-                    <p class="font-bold text-lilac-700">LKPD (${fd.lkpd.caseTitle || 'Belum dipilih'}):</p>
-                    <p><strong>Clue 1:</strong> ${fd.lkpd.clue1 || '-'}</p>
-                    <p><strong>Clue 2:</strong> ${fd.lkpd.clue2 || '-'}</p>
-                    <p><strong>Clue 3:</strong> ${fd.lkpd.clue3 || '-'}</p>
-                    <p><strong>Clue 4:</strong> ${fd.lkpd.clue4 || '-'}</p>
-                    <p><strong>Clue 5:</strong> ${fd.lkpd.clue5 || '-'}</p>
+                    <p class="font-bold text-lilac-700">3. Isian LKPD (${fd.lkpd.caseTitle || 'Belum dipilih'}):</p>
+                    <p><strong>Clue 1 (Klasifikasi):</strong> ${fd.lkpd.clue1 || '-'}</p>
+                    <p><strong>Clue 2 (Netiket):</strong> ${fd.lkpd.clue2 || '-'}</p>
+                    <p><strong>Clue 3 (Manfaat):</strong> ${fd.lkpd.clue3 || '-'}</p>
+                    <p><strong>Clue 4 (Risiko):</strong> ${fd.lkpd.clue4 || '-'}</p>
+                    <p><strong>Clue 5 (Jejak Digital):</strong> ${fd.lkpd.clue5 || '-'}</p>
                     <p><strong>Kesimpulan 5W+1H:</strong> ${fd.lkpd.conclusion || '-'}</p>
                 </div>
                 <div class="p-3 bg-digiblue-50 rounded-xl space-y-1">
-                    <p class="font-bold text-digiblue-700">Tugas:</p>
-                    <p><strong>URL:</strong> <a href="${fd.taskUrl}" target="_blank" class="underline text-blue-600">${fd.taskUrl || 'Belum ada'}</a></p>
-                    <p><strong>Catatan:</strong> ${fd.taskNote || '-'}</p>
+                    <p class="font-bold text-digiblue-700">4. Pengumpulan Tugas:</p>
+                    <p><strong>Link Poster:</strong> <a href="${fd.taskUrl}" target="_blank" class="underline text-blue-600">${fd.taskUrl || 'Belum diunggah'}</a></p>
+                    <p><strong>Catatan Tambahan:</strong> ${fd.taskNote || '-'}</p>
                 </div>
                 <div class="p-3 bg-matcha-50 rounded-xl space-y-1">
-                    <p class="font-bold text-matcha-700">Refleksi:</p>
+                    <p class="font-bold text-matcha-700">5. Refleksi Akhir:</p>
                     <p><strong>Hal Baru:</strong> ${fd.reflectionData.ref1 || '-'}</p>
                     <p><strong>Tantangan:</strong> ${fd.reflectionData.ref2 || '-'}</p>
                     <p><strong>Tingkat Pemahaman:</strong> ${fd.reflectionData.understand}%</p>
@@ -988,14 +1027,15 @@
         function downloadTeacherReport() {
             let allStudents = JSON.parse(localStorage.getItem('teacher_all_students_data') || '[]');
             if (allStudents.length === 0) { alert('Belum ada data untuk diunduh.'); return; }
-            let csv = 'Waktu,Nama Siswa,Kelas,Absen,Sim1_Percobaan,Sim2_Percobaan,Sim3_Percobaan,Status Tugas,Status Refleksi\n';
+            let csv = 'Waktu,Nama Siswa,Kelas,Absen,Mood,Kesiapan,Pertanyaan_Pemantik,Sim1_Percobaan,Sim2_Percobaan,Sim3_Percobaan,Studi_Kasus,LKPD_Kesimpulan,Link_Tugas,Refleksi_Hal_Baru,Refleksi_Tantangan,Tingkat_Pemahaman\n';
             allStudents.forEach(s => {
-                csv += `"${s.timestamp}","${s.name}","${s.class}","${s.absent}",${s.fullData.quizAttempts.sim1},${s.fullData.quizAttempts.sim2},${s.fullData.quizAttempts.sim3},"${s.taskStatus}","${s.fullData.reflectionSubmitted ? 'Selesai' : 'Belum'}"\n`;
+                const fd = s.fullData;
+                csv += `"${s.timestamp}","${s.name}","${s.class}","${s.absent}","${fd.mood}","${fd.readiness}%","${(fd.triggerAns||'').replace(/"/g, '""')}","${fd.quizAttempts.sim1}","${fd.quizAttempts.sim2}","${fd.quizAttempts.sim3}","${fd.lkpd.caseTitle||'-'}","${(fd.lkpd.conclusion||'').replace(/"/g, '""')}","${fd.taskUrl||'-'}","${(fd.reflectionData.ref1||'').replace(/"/g, '""')}","${(fd.reflectionData.ref2||'').replace(/"/g, '""')}","${fd.reflectionData.understand}%"\n`;
             });
             const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
-            link.download = `Rekap_Nilai_KotaDigital_${new Date().toISOString().slice(0,10)}.csv`;
+            link.download = `Rekap_Lengkap_KotaDigital_${new Date().toISOString().slice(0,10)}.csv`;
             link.click();
         }
 
