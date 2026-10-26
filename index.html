@@ -605,7 +605,7 @@
 
     <!-- 8. JAVASCRIPT LOGIC -->
     <script>
-        // MASUKKAN URL GOOGLE APPS SCRIPT ANDA DI SINI
+        // URL GOOGLE APPS SCRIPT ANDA
         const GOOGLE_SHEETS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxrezQj9CANv1uB4pc2xlJ3mDaQQ2-vVHzXJRF9Ixbay_vhEccgFxjMgvK49Ol-o1gl/exec'; 
         const TEACHER_PASSWORD = 'budi149';
 
@@ -981,7 +981,7 @@
             }
         }
 
-        /* AKSELERASI REKAP DATA SERVER TERPUSAT GURU (BISA DIBUKA DI MANA SAJA) */
+        /* REKAP DATA SERVER TERPUSAT GURU */
         function openTeacherDashboard() {
             const pwd = prompt("Masukkan Sandi Panel Guru:");
             if (pwd !== TEACHER_PASSWORD) {
@@ -1089,11 +1089,12 @@
 
         function submitToTeacherServer(payload) {
             saveState();
-            if (!GOOGLE_SHEETS_WEB_APP_URL || GOOGLE_SHEETS_WEB_APP_URL.includes('https://script.google.com/macros/s/AKfycbxrezQj9CANv1uB4pc2xlJ3mDaQQ2-vVHzXJRF9Ixbay_vhEccgFxjMgvK49Ol-o1gl/exec')) return;
+            if (!GOOGLE_SHEETS_WEB_APP_URL || GOOGLE_SHEETS_WEB_APP_URL.includes('...')) return;
             
             fetch(GOOGLE_SHEETS_WEB_APP_URL, {
                 method: 'POST',
-                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(userData)
             }).catch(err => console.error("Sync error:", err));
         }
