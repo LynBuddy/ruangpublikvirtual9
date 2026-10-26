@@ -56,7 +56,7 @@
 </head>
 <body class="bg-gradient-to-br from-slate-50 via-digiblue-100/30 to-lilac-100/40 min-h-screen text-slate-800 font-sans antialiased pb-12">
 
-    <!-- 1. MODAL WELCOMING & CHECK-IN (SCROLLABLE) -->
+    <!-- 1. MODAL WELCOMING & CHECK-IN -->
     <div id="welcome-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-md overflow-y-auto">
         <div class="glass-panel w-full max-w-lg rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/80 my-8 max-h-[90vh] overflow-y-auto">
             <div class="text-center mb-6">
@@ -206,7 +206,7 @@
             </div>
         </div>
 
-        <!-- 3. PUSAT BAHAN PEMBELAJARAN (PREVIEW DRIVE PPT & MODUL PDF) -->
+        <!-- 3. PUSAT BAHAN PEMBELAJARAN -->
         <section id="tab-materi" class="tab-content block">
             <div class="glass-panel p-6 rounded-3xl shadow-sm mb-6">
                 <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 border-b border-slate-200/60 mb-6 gap-4">
@@ -228,11 +228,10 @@
                     </div>
                 </div>
 
-                <!-- Mode 1: Preview Google Drive PPT/Slides -->
                 <div id="material-visual" class="block">
                     <div class="w-full rounded-2xl overflow-hidden bg-slate-900 shadow-inner border border-slate-700 relative">
                         <div class="p-3 bg-slate-800 text-white text-xs flex justify-between items-center">
-                            <span class="font-semibold"><i class="fa-brands fa-google-drive mr-1.5 text-digiblue-400"></i> Presentasi Pembelajaran (Google Drive / Canva Embed)</span>
+                            <span class="font-semibold"><i class="fa-brands fa-google-drive mr-1.5 text-digiblue-400"></i> Presentasi Pembelajaran</span>
                             <a href="https://docs.google.com/presentation" target="_blank" class="text-matcha-300 hover:underline font-bold"><i class="fa-solid fa-download mr-1"></i> Buka File PPT</a>
                         </div>
                         <div class="aspect-video w-full bg-slate-950 flex items-center justify-center">
@@ -241,7 +240,6 @@
                     </div>
                 </div>
 
-                <!-- Mode 2: Preview Modul PDF -->
                 <div id="material-textual" class="hidden">
                     <div class="w-full rounded-2xl overflow-hidden bg-slate-900 shadow-inner border border-slate-700 relative">
                         <div class="p-3 bg-slate-800 text-white text-xs flex justify-between items-center">
@@ -256,32 +254,38 @@
             </div>
         </section>
 
-        <!-- 4. MINI KUIS INTERAKTIF & SIMULASI -->
+        <!-- 4. MINI KUIS INTERAKTIF & TERKUNCI JIKA SUDAH BENAR -->
         <section id="tab-kuis" class="tab-content hidden">
             <div class="glass-panel p-6 rounded-3xl shadow-sm mb-6">
                 <div class="mb-6">
                     <h2 class="text-xl font-extrabold text-slate-800 flex items-center">
                         <i class="fa-solid fa-gamepad text-warmorange-500 mr-2"></i> Simulasi Kota Digital & Mini Kuis
                     </h2>
-                    <p class="text-xs text-slate-500">Selesaikan tantangan di bawah! Jawaban benar atau salah akan memberikan feedback pop-up interaktif & suara.</p>
+                    <p class="text-xs text-slate-500">Selesaikan tantangan di bawah! Kuis akan terkunci otomatis setelah berhasil dijawab dengan benar.</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <!-- Simulasi 1 -->
-                    <div class="glass-card p-5 rounded-2xl border border-white flex flex-col justify-between">
+                    <div class="glass-card p-5 rounded-2xl border border-white flex flex-col justify-between" id="card-sim1">
                         <div>
-                            <span class="text-[10px] bg-warmorange-100 text-warmorange-600 px-2 py-0.5 rounded-full font-bold uppercase">Simulasi 1</span>
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-[10px] bg-warmorange-100 text-warmorange-600 px-2 py-0.5 rounded-full font-bold uppercase">Simulasi 1</span>
+                                <span id="badge-sim1" class="text-[10px] font-bold text-slate-500">Percobaan: 0</span>
+                            </div>
                             <h3 class="font-bold text-sm text-slate-800 mt-2 mb-1">Etika Komentar (Netiket)</h3>
                             <p class="text-xs text-slate-600 mb-3">Ubah komentar toxic: <em>"Mainmu jelek banget, mending hapus game-nya!"</em> menjadi santun:</p>
                             <textarea id="sim1-input" rows="3" placeholder="Tuliskan perbaikan kalimat..." class="w-full p-2.5 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-warmorange-400 focus:outline-none"></textarea>
                         </div>
-                        <button onclick="submitSim1()" class="mt-4 w-full py-2 bg-warmorange-500 text-white font-bold rounded-xl text-xs hover:bg-warmorange-600 transition">Periksa Jawaban</button>
+                        <button id="btn-sim1" onclick="submitSim1()" class="mt-4 w-full py-2 bg-warmorange-500 text-white font-bold rounded-xl text-xs hover:bg-warmorange-600 transition">Periksa Jawaban</button>
                     </div>
 
                     <!-- Simulasi 2 -->
-                    <div class="glass-card p-5 rounded-2xl border border-white flex flex-col justify-between">
+                    <div class="glass-card p-5 rounded-2xl border border-white flex flex-col justify-between" id="card-sim2">
                         <div>
-                            <span class="text-[10px] bg-digiblue-100 text-digiblue-600 px-2 py-0.5 rounded-full font-bold uppercase">Simulasi 2</span>
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-[10px] bg-digiblue-100 text-digiblue-600 px-2 py-0.5 rounded-full font-bold uppercase">Simulasi 2</span>
+                                <span id="badge-sim2" class="text-[10px] font-bold text-slate-500">Percobaan: 0</span>
+                            </div>
                             <h3 class="font-bold text-sm text-slate-800 mt-2 mb-1">Deteksi Hoaks (Prinsip 3S)</h3>
                             <p class="text-xs text-slate-600 mb-3">Mendapatkan info viral bantuan dana tidak resmi di grup warga, tindakan tepat:</p>
                             <div class="space-y-2 text-xs">
@@ -289,13 +293,16 @@
                                 <label class="flex items-center space-x-2 bg-white/60 p-2 rounded-xl border cursor-pointer hover:bg-digiblue-50"><input type="radio" name="hoax-action" value="saring" class="accent-digiblue-500"><span>Saring & Cek kebenaran dulu</span></label>
                             </div>
                         </div>
-                        <button onclick="submitSim2()" class="mt-4 w-full py-2 bg-digiblue-500 text-white font-bold rounded-xl text-xs hover:bg-digiblue-600 transition">Verifikasi Aksi</button>
+                        <button id="btn-sim2" onclick="submitSim2()" class="mt-4 w-full py-2 bg-digiblue-500 text-white font-bold rounded-xl text-xs hover:bg-digiblue-600 transition">Verifikasi Aksi</button>
                     </div>
 
                     <!-- Simulasi 3 -->
-                    <div class="glass-card p-5 rounded-2xl border border-white flex flex-col justify-between">
+                    <div class="glass-card p-5 rounded-2xl border border-white flex flex-col justify-between" id="card-sim3">
                         <div>
-                            <span class="text-[10px] bg-matcha-100 text-matcha-600 px-2 py-0.5 rounded-full font-bold uppercase">Simulasi 3</span>
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-[10px] bg-matcha-100 text-matcha-600 px-2 py-0.5 rounded-full font-bold uppercase">Simulasi 3</span>
+                                <span id="badge-sim3" class="text-[10px] font-bold text-slate-500">Percobaan: 0</span>
+                            </div>
                             <h3 class="font-bold text-sm text-slate-800 mt-2 mb-1">Keamanan Privasi</h3>
                             <p class="text-xs text-slate-600 mb-3">Manakah data yang <strong>BAHAYA</strong> jika diposting ke publik?</p>
                             <div class="space-y-1.5 text-xs">
@@ -304,13 +311,13 @@
                                 <label class="flex items-center space-x-2"><input type="checkbox" id="priv-3" class="accent-matcha-500"><span>Alamat & Tiket Pesawat Pribadi</span></label>
                             </div>
                         </div>
-                        <button onclick="submitSim3()" class="mt-4 w-full py-2 bg-matcha-500 text-white font-bold rounded-xl text-xs hover:bg-matcha-600 transition">Evaluasi Privasi</button>
+                        <button id="btn-sim3" onclick="submitSim3()" class="mt-4 w-full py-2 bg-matcha-500 text-white font-bold rounded-xl text-xs hover:bg-matcha-600 transition">Evaluasi Privasi</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 5. LKPD ONLINE (GERBANG KODE SANDI & KESIMPULAN KOLOM TUNGGAL) -->
+        <!-- 5. LKPD ONLINE (CLUE TETAP MUNCUL DI LAYAR & KESIMPULAN TUNGGAL) -->
         <section id="tab-lkpd" class="tab-content hidden">
             <div class="glass-panel p-6 rounded-3xl shadow-sm mb-6">
                 <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 border-b border-slate-200/60 mb-6 gap-2">
@@ -318,11 +325,10 @@
                         <h2 class="text-xl font-extrabold text-slate-800 flex items-center">
                             <i class="fa-solid fa-clipboard-list text-lilac-500 mr-2"></i> LKPD Online Kelompok (Studi Kasus Detektif Digital)
                         </h2>
-                        <p class="text-xs text-slate-500">Masukkan kode sandi yang diberikan guru melalui postingan peta kota digital untuk membuka studi kasus.</p>
+                        <p class="text-xs text-slate-500">Masukkan kode sandi dari peta kota digital untuk membuka studi kasus.</p>
                     </div>
                 </div>
 
-                <!-- Identitas Kelompok -->
                 <div class="bg-white/60 p-4 rounded-2xl border border-white mb-6">
                     <h3 class="text-xs font-bold uppercase tracking-wider text-slate-700 mb-3"><i class="fa-solid fa-users mr-1"></i> Identitas Kelompok</h3>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
@@ -331,11 +337,9 @@
                     </div>
                 </div>
 
-                <!-- Case Selection with Password Gate -->
                 <div id="case-selector" class="mb-6 space-y-4">
                     <h3 class="text-xs font-bold uppercase tracking-wider text-slate-700 mb-3">Pilih Studi Kasus Kelompok:</h3>
                     
-                    <!-- Kasus 1 Card & Gate -->
                     <div class="glass-card p-5 rounded-2xl border border-slate-200 space-y-3">
                         <span class="text-[10px] font-bold bg-lilac-100 text-lilac-600 px-2 py-0.5 rounded-full">Studi Kasus 1</span>
                         <h4 class="font-bold text-sm text-slate-800">"Jejak Retak di Ruang Maya" (Rian - E-Sport & Jejak Digital)</h4>
@@ -346,7 +350,6 @@
                         </div>
                     </div>
 
-                    <!-- Kasus 2 Card & Gate -->
                     <div class="glass-card p-5 rounded-2xl border border-slate-200 space-y-3">
                         <span class="text-[10px] font-bold bg-digiblue-100 text-digiblue-600 px-2 py-0.5 rounded-full">Studi Kasus 2</span>
                         <h4 class="font-bold text-sm text-slate-800">"Misteri Berita Viral di Grup Warga" (Kirana & Hoaks Phising)</h4>
@@ -358,7 +361,7 @@
                     </div>
                 </div>
 
-                <!-- LKPD Workspace (Clues & Single Conclusion Box) -->
+                <!-- LKPD Workspace (Clues Always Visible) -->
                 <div id="lkpd-workspace" class="hidden space-y-4">
                     <div class="p-3 bg-matcha-100/60 rounded-xl border border-matcha-300 text-xs font-bold text-matcha-600 flex items-center justify-between">
                         <span><i class="fa-solid fa-lock-open mr-1"></i> Kasus Aktif: <span id="locked-case-title">-</span></span>
@@ -400,7 +403,7 @@
                         <textarea id="clue-5" disabled oninput="validateClues()" rows="2" placeholder="🔒 Terkunci..." class="w-full p-2.5 rounded-xl border border-slate-200 text-xs disabled:bg-slate-100 disabled:cursor-not-allowed"></textarea>
                     </div>
 
-                    <!-- Lembar Kesimpulan (Kolom Tunggal untuk Mengetik) -->
+                    <!-- Lembar Kesimpulan (Kolom Tunggal) -->
                     <div class="bg-gradient-to-r from-lilac-100/50 to-digiblue-100/50 p-5 rounded-2xl border border-lilac-200 mt-6 space-y-3">
                         <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wide">Lembar Kesimpulan Analisis Kelompok 📝</h4>
                         <p class="text-[11px] text-slate-600">Tuliskan kesimpulan komprehensif kelompokmu (menjawab unsur What, Who, Where, When, Why, How):</p>
@@ -429,7 +432,7 @@
 
                 <form id="form-task" onsubmit="handleTaskSubmit(event)" class="space-y-4">
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Tautan Tautan Poster / Google Drive / Screenshot</label>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Tautan Poster / Google Drive / Screenshot</label>
                         <input type="url" id="task-url" required placeholder="https://canva.com/design/..." class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-digiblue-400 focus:outline-none">
                     </div>
                     <div>
@@ -447,7 +450,7 @@
             </div>
         </section>
 
-        <!-- 7. REFLEKSI AKHIR & EVALUASI -->
+        <!-- 7. REFLEKSI AKHIR -->
         <section id="tab-refleksi" class="tab-content hidden">
             <div class="glass-panel p-6 rounded-3xl shadow-sm mb-6 max-w-2xl mx-auto">
                 <div class="mb-6 text-center">
@@ -504,13 +507,13 @@
         </div>
     </div>
 
-    <!-- PANEL GURU REAL-TIME (DENGAN PROTEKSI SANDI budi149) -->
+    <!-- PANEL GURU REAL-TIME (DENGAN DETAIL JAWABAN SISWA) -->
     <div id="teacher-dashboard-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md">
-        <div class="glass-panel w-full max-w-4xl rounded-3xl p-6 shadow-2xl border border-white max-h-[90vh] flex flex-col">
+        <div class="glass-panel w-full max-w-5xl rounded-3xl p-6 shadow-2xl border border-white max-h-[90vh] flex flex-col">
             <div class="flex justify-between items-center pb-4 border-b border-slate-200 mb-4">
                 <div>
-                    <h3 class="text-lg font-extrabold text-slate-800"><i class="fa-solid fa-chalkboard-user text-digiblue-500 mr-2"></i> Panel Real-Time Guru</h3>
-                    <p class="text-xs text-slate-500">Pantau progres pengerjaan seluruh siswa dimanapun & kapanpun secara live</p>
+                    <h3 class="text-lg font-extrabold text-slate-800"><i class="fa-solid fa-chalkboard-user text-digiblue-500 mr-2"></i> Panel Real-Time Guru (Detail Isian Siswa)</h3>
+                    <p class="text-xs text-slate-500">Pantau percobaan kuis, isian LKPD, tugas, dan refleksi seluruh siswa</p>
                 </div>
                 <div class="space-x-2">
                     <button onclick="downloadTeacherReport()" class="px-3 py-1.5 bg-matcha-500 text-white rounded-xl text-xs font-bold hover:bg-matcha-600 transition"><i class="fa-solid fa-file-excel mr-1"></i> Download Rekap (.CSV)</button>
@@ -521,17 +524,30 @@
                 <table class="w-full text-left text-xs">
                     <thead class="bg-slate-100 text-slate-700 uppercase">
                         <tr>
-                            <th class="p-3">Waktu</th>
-                            <th class="p-3">Nama Siswa</th>
-                            <th class="p-3">Kelas</th>
-                            <th class="p-3">Aktivitas Terakhir</th>
-                            <th class="p-3">Status Tugas</th>
+                            <th class="p-3">Nama & Kelas</th>
+                            <th class="p-3">Kuis (Percobaan)</th>
+                            <th class="p-3">Status LKPD</th>
+                            <th class="p-3">Tugas</th>
+                            <th class="p-3">Aksi Guru</th>
                         </tr>
                     </thead>
                     <tbody id="teacher-table-body" class="divide-y divide-slate-200">
-                        <!-- Data populated dynamically -->
+                        <!-- Populated dynamically -->
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DETAIL SISWA UNTUK GURU -->
+    <div id="student-detail-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md">
+        <div class="glass-panel w-full max-w-2xl rounded-3xl p-6 shadow-2xl border border-white max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center pb-3 border-b border-slate-200 mb-4">
+                <h3 id="modal-student-title" class="text-base font-extrabold text-slate-800">Detail Jawaban Siswa</h3>
+                <button onclick="document.getElementById('student-detail-modal').classList.add('hidden')" class="px-3 py-1 bg-slate-200 rounded-xl text-xs font-bold">Tutup</button>
+            </div>
+            <div id="modal-student-content" class="space-y-4 text-xs">
+                <!-- Content injected dynamically -->
             </div>
         </div>
     </div>
@@ -552,10 +568,11 @@
 
         let userData = {
             name: '', class: '', absent: '', mood: '', readiness: '', triggerAns: '',
-            simulations: { sim1: false, sim2: false, sim3: false },
+            quizAttempts: { sim1: 0, sim2: 0, sim3: 0 },
+            quizPassed: { sim1: false, sim2: false, sim3: false },
             lkpd: { locked: false, caseId: '', caseTitle: '', clue1: '', clue2: '', clue3: '', clue4: '', clue5: '', conclusion: '' },
             taskSubmitted: false, taskUrl: '', taskNote: '',
-            reflectionSubmitted: false
+            reflectionSubmitted: false, reflectionData: { ref1: '', ref2: '', understand: '85' }
         };
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -672,25 +689,37 @@
             }
         }
 
+        /* MINI KUIS LOGIC (LOCKS AFTER SUCCESS) */
         function submitSim1() {
+            if (userData.quizPassed.sim1) return;
+            userData.quizAttempts.sim1++;
+            document.getElementById('badge-sim1').innerText = `Percobaan: ${userData.quizAttempts.sim1}`;
+
             const val = document.getElementById('sim1-input').value.trim();
             if (val.length < 5) {
                 showQuizFeedback(false, 'Kurang Lengkap', 'Tuliskan perbaikan komentar secara santun dan konstruktif.');
+                saveState();
                 return;
             }
-            userData.simulations.sim1 = true;
+            userData.quizPassed.sim1 = true;
             updateTPIndicator('tp-2');
-            showQuizFeedback(true, 'Hebat!', 'Perbaikan komentar netiket diterima dengan sangat baik.');
+            lockQuizCard('sim1', 'sim1-input', 'btn-sim1');
+            showQuizFeedback(true, 'Hebat!', 'Perbaikan komentar netiket diterima. Kuis terkunci.');
             saveState();
         }
 
         function submitSim2() {
+            if (userData.quizPassed.sim2) return;
+            userData.quizAttempts.sim2++;
+            document.getElementById('badge-sim2').innerText = `Percobaan: ${userData.quizAttempts.sim2}`;
+
             const selected = document.querySelector('input[name="hoax-action"]:checked');
             if (!selected) { alert('Pilih salah satu opsi!'); return; }
             if (selected.value === 'saring') {
-                userData.simulations.sim2 = true;
+                userData.quizPassed.sim2 = true;
                 updateTPIndicator('tp-3');
-                showQuizFeedback(true, 'Benar!', 'Prinsip Saring Sebelum Sharing berhasil diterapkan.');
+                lockQuizCardGroup('sim2', 'btn-sim2');
+                showQuizFeedback(true, 'Benar!', 'Prinsip Saring Sebelum Sharing berhasil diterapkan. Kuis terkunci.');
             } else {
                 showQuizFeedback(false, 'Kurang Tepat', 'Menyebarkan tautan tanpa verifikasi berbahaya dan memicu hoaks.');
             }
@@ -698,19 +727,39 @@
         }
 
         function submitSim3() {
+            if (userData.quizPassed.sim3) return;
+            userData.quizAttempts.sim3++;
+            document.getElementById('badge-sim3').innerText = `Percobaan: ${userData.quizAttempts.sim3}`;
+
             const c1 = document.getElementById('priv-1').checked;
             const c2 = document.getElementById('priv-2').checked;
             const c3 = document.getElementById('priv-3').checked;
             if (c1 && !c2 && c3) {
-                userData.simulations.sim3 = true;
-                showQuizFeedback(true, 'Tepat Sekali!', 'NIK dan Alamat/Tiket adalah data privasi sensitif.');
+                userData.quizPassed.sim3 = true;
+                lockQuizCardGroup('sim3', 'btn-sim3');
+                showQuizFeedback(true, 'Tepat Sekali!', 'NIK dan Alamat/Tiket adalah data privasi sensitif. Kuis terkunci.');
             } else {
                 showQuizFeedback(false, 'Kurang Tepat', 'Periksa kembali data sensitif yang membahayakan privasi.');
             }
             saveState();
         }
 
-        /* LKPD GATE PASSWORDS & CLUE SYSTEM */
+        function lockQuizCard(id, inputId, btnId) {
+            document.getElementById(inputId).disabled = true;
+            const btn = document.getElementById(btnId);
+            btn.disabled = true;
+            btn.className = "mt-4 w-full py-2 bg-slate-300 text-slate-600 font-bold rounded-xl text-xs cursor-not-allowed";
+            btn.innerText = "Terkunci (Selesai)";
+        }
+
+        function lockQuizCardGroup(id, btnId) {
+            const btn = document.getElementById(btnId);
+            btn.disabled = true;
+            btn.className = "mt-4 w-full py-2 bg-slate-300 text-slate-600 font-bold rounded-xl text-xs cursor-not-allowed";
+            btn.innerText = "Terkunci (Selesai)";
+        }
+
+        /* LKPD GATE PASSWORDS & CLUE SYSTEM (ALL CLUES REMAIN VISIBLE) */
         function unlockCase(id) {
             const passInput = document.getElementById(`pass-case-${id}`).value.trim();
             const correctPass = id === 1 ? '9147' : '8514';
@@ -751,10 +800,10 @@
             const c4 = document.getElementById('clue-4');
             const c5 = document.getElementById('clue-5');
 
-            if(c1.length > 2) { c2.disabled = false; c2.placeholder = "Tuliskan jawaban Clue 2..."; document.getElementById('clue-desc-2').innerText = "🔓 Terbuka"; }
-            if(c2.value.trim().length > 2) { c3.disabled = false; c3.placeholder = "Tuliskan jawaban Clue 3..."; document.getElementById('clue-desc-3').innerText = "🔓 Terbuka"; }
-            if(c3.value.trim().length > 2) { c4.disabled = false; c4.placeholder = "Tuliskan jawaban Clue 4..."; document.getElementById('clue-desc-4').innerText = "🔓 Terbuka"; }
-            if(c4.value.trim().length > 2) { c5.disabled = false; c5.placeholder = "Tuliskan jawaban Clue 5..."; document.getElementById('clue-desc-5').innerText = "🔓 Terbuka"; }
+            if(c1.length > 2) { c2.disabled = false; c2.placeholder = "Tuliskan jawaban Clue 2..."; document.getElementById('clue-desc-2').innerText = "🔓 Terbuka - Pertanyaan aktif"; }
+            if(c2.value.trim().length > 2) { c3.disabled = false; c3.placeholder = "Tuliskan jawaban Clue 3..."; document.getElementById('clue-desc-3').innerText = "🔓 Terbuka - Pertanyaan aktif"; }
+            if(c3.value.trim().length > 2) { c4.disabled = false; c4.placeholder = "Tuliskan jawaban Clue 4..."; document.getElementById('clue-desc-4').innerText = "🔓 Terbuka - Pertanyaan aktif"; }
+            if(c4.value.trim().length > 2) { c5.disabled = false; c5.placeholder = "Tuliskan jawaban Clue 5..."; document.getElementById('clue-desc-5').innerText = "🔓 Terbuka - Pertanyaan aktif"; }
 
             if(c5.value.trim().length > 2) {
                 const singleCon = document.getElementById('single-conclusion');
@@ -815,6 +864,10 @@
                 return;
             }
             userData.reflectionSubmitted = true;
+            userData.reflectionData.ref1 = document.getElementById('ref-1').value;
+            userData.reflectionData.ref2 = document.getElementById('ref-2').value;
+            userData.reflectionData.understand = document.getElementById('ref-understand').value;
+
             saveState();
             document.getElementById('celebration-modal').classList.remove('hidden');
             if (typeof confetti === 'function') confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
@@ -831,7 +884,8 @@
                 class: userData.class || '-',
                 absent: userData.absent || '-',
                 activity: userData.reflectionSubmitted ? 'Selesai Sesi' : (userData.taskSubmitted ? 'Tugas Dikirim' : (userData.lkpd.locked ? 'Mengerjakan LKPD' : 'Check-in')),
-                taskStatus: userData.taskSubmitted ? 'Sudah Diunggah' : 'Belum'
+                taskStatus: userData.taskSubmitted ? 'Sudah Diunggah' : 'Belum',
+                fullData: userData
             };
             if (idx >= 0) allStudents[idx] = studentRecord;
             else allStudents.push(studentRecord);
@@ -843,9 +897,21 @@
                 document.getElementById('task-status-badge').className = "font-bold text-matcha-600 bg-matcha-100 px-2.5 py-0.5 rounded-full";
                 document.getElementById('task-status-badge').innerHTML = `<i class="fa-solid fa-check mr-1"></i> Berhasil Diunggah`;
             }
+            if (userData.quizPassed.sim1) {
+                document.getElementById('badge-sim1').innerText = `Percobaan: ${userData.quizAttempts.sim1}`;
+                lockQuizCard('sim1', 'sim1-input', 'btn-sim1');
+            }
+            if (userData.quizPassed.sim2) {
+                document.getElementById('badge-sim2').innerText = `Percobaan: ${userData.quizAttempts.sim2}`;
+                lockQuizCardGroup('sim2', 'btn-sim2');
+            }
+            if (userData.quizPassed.sim3) {
+                document.getElementById('badge-sim3').innerText = `Percobaan: ${userData.quizAttempts.sim3}`;
+                lockQuizCardGroup('sim3', 'btn-sim3');
+            }
         }
 
-        /* PASSWORD PROTECTED TEACHER DASHBOARD */
+        /* PASSWORD PROTECTED TEACHER DASHBOARD WITH DETAIL VIEW */
         function openTeacherDashboard() {
             const pwd = prompt("Masukkan Sandi Panel Guru:");
             if (pwd !== TEACHER_PASSWORD) {
@@ -859,14 +925,14 @@
             if (allStudents.length === 0) {
                 tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-slate-400">Belum ada data siswa yang masuk.</td></tr>`;
             } else {
-                allStudents.forEach(s => {
+                allStudents.forEach((s, index) => {
                     tbody.innerHTML += `
                         <tr class="hover:bg-slate-50">
-                            <td class="p-3 text-slate-500">${s.timestamp}</td>
-                            <td class="p-3 font-bold text-slate-800">${s.name}</td>
-                            <td class="p-3">${s.class} (Absen ${s.absent})</td>
-                            <td class="p-3"><span class="px-2 py-0.5 bg-digiblue-100 text-digiblue-600 rounded-full font-semibold">${s.activity}</span></td>
+                            <td class="p-3 font-bold text-slate-800">${s.name} <span class="block text-[10px] text-slate-500">Kelas ${s.class} (Absen ${s.absent})</span></td>
+                            <td class="p-3">Sim1: ${s.fullData.quizAttempts.sim1}x | Sim2: ${s.fullData.quizAttempts.sim2}x | Sim3: ${s.fullData.quizAttempts.sim3}x</td>
+                            <td class="p-3"><span class="px-2 py-0.5 bg-lilac-100 text-lilac-600 rounded-full font-semibold">${s.fullData.lkpd.locked ? 'Dikerjakan' : 'Belum'}</span></td>
                             <td class="p-3 font-semibold text-slate-700">${s.taskStatus}</td>
+                            <td class="p-3"><button onclick="viewStudentDetail(${index})" class="px-3 py-1 bg-digiblue-500 text-white rounded-xl text-xs font-bold hover:bg-digiblue-600 transition">Lihat Detail</button></td>
                         </tr>
                     `;
                 });
@@ -874,12 +940,54 @@
             document.getElementById('teacher-dashboard-modal').classList.remove('hidden');
         }
 
+        function viewStudentDetail(index) {
+            let allStudents = JSON.parse(localStorage.getItem('teacher_all_students_data') || '[]');
+            const s = allStudents[index];
+            const fd = s.fullData;
+
+            document.getElementById('modal-student-title').innerText = `Detail Jawaban: ${s.name} (Kelas ${s.class})`;
+            const content = document.getElementById('modal-student-content');
+            content.innerHTML = `
+                <div class="p-3 bg-slate-100 rounded-xl space-y-1">
+                    <p><strong>Mood & Kesiapan:</strong> ${fd.mood} | Kesiapan: ${fd.readiness}%</p>
+                    <p><strong>Pertanyaan Pemantik:</strong> "${fd.triggerAns}"</p>
+                </div>
+                <div class="p-3 bg-warmorange-50 rounded-xl space-y-1">
+                    <p class="font-bold text-warmorange-700">Percobaan Kuis:</p>
+                    <p>Simulasi 1: ${fd.quizAttempts.sim1} percobaan (Status: ${fd.quizPassed.sim1 ? 'Lulus' : 'Belum'})</p>
+                    <p>Simulasi 2: ${fd.quizAttempts.sim2} percobaan (Status: ${fd.quizPassed.sim2 ? 'Lulus' : 'Belum'})</p>
+                    <p>Simulasi 3: ${fd.quizAttempts.sim3} percobaan (Status: ${fd.quizPassed.sim3 ? 'Lulus' : 'Belum'})</p>
+                </div>
+                <div class="p-3 bg-lilac-50 rounded-xl space-y-1">
+                    <p class="font-bold text-lilac-700">LKPD (${fd.lkpd.caseTitle || 'Belum dipilih'}):</p>
+                    <p><strong>Clue 1:</strong> ${fd.lkpd.clue1 || '-'}</p>
+                    <p><strong>Clue 2:</strong> ${fd.lkpd.clue2 || '-'}</p>
+                    <p><strong>Clue 3:</strong> ${fd.lkpd.clue3 || '-'}</p>
+                    <p><strong>Clue 4:</strong> ${fd.lkpd.clue4 || '-'}</p>
+                    <p><strong>Clue 5:</strong> ${fd.lkpd.clue5 || '-'}</p>
+                    <p><strong>Kesimpulan 5W+1H:</strong> ${fd.lkpd.conclusion || '-'}</p>
+                </div>
+                <div class="p-3 bg-digiblue-50 rounded-xl space-y-1">
+                    <p class="font-bold text-digiblue-700">Tugas:</p>
+                    <p><strong>URL:</strong> <a href="${fd.taskUrl}" target="_blank" class="underline text-blue-600">${fd.taskUrl || 'Belum ada'}</a></p>
+                    <p><strong>Catatan:</strong> ${fd.taskNote || '-'}</p>
+                </div>
+                <div class="p-3 bg-matcha-50 rounded-xl space-y-1">
+                    <p class="font-bold text-matcha-700">Refleksi:</p>
+                    <p><strong>Hal Baru:</strong> ${fd.reflectionData.ref1 || '-'}</p>
+                    <p><strong>Tantangan:</strong> ${fd.reflectionData.ref2 || '-'}</p>
+                    <p><strong>Tingkat Pemahaman:</strong> ${fd.reflectionData.understand}%</p>
+                </div>
+            `;
+            document.getElementById('student-detail-modal').classList.remove('hidden');
+        }
+
         function downloadTeacherReport() {
             let allStudents = JSON.parse(localStorage.getItem('teacher_all_students_data') || '[]');
             if (allStudents.length === 0) { alert('Belum ada data untuk diunduh.'); return; }
-            let csv = 'Waktu,Nama Siswa,Kelas,Absen,Aktivitas Terakhir,Status Tugas\n';
+            let csv = 'Waktu,Nama Siswa,Kelas,Absen,Sim1_Percobaan,Sim2_Percobaan,Sim3_Percobaan,Status Tugas,Status Refleksi\n';
             allStudents.forEach(s => {
-                csv += `"${s.timestamp}","${s.name}","${s.class}","${s.absent}","${s.activity}","${s.taskStatus}"\n`;
+                csv += `"${s.timestamp}","${s.name}","${s.class}","${s.absent}",${s.fullData.quizAttempts.sim1},${s.fullData.quizAttempts.sim2},${s.fullData.quizAttempts.sim3},"${s.taskStatus}","${s.fullData.reflectionSubmitted ? 'Selesai' : 'Belum'}"\n`;
             });
             const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
             const link = document.createElement('a');
